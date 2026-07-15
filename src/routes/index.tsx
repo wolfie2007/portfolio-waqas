@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode, type ElementType } from "react";
 import { motion, useScroll, useTransform, type MotionProps } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -220,44 +221,124 @@ function HeroSection() {
 
 /* ---------- Marquee ---------- */
 
-const MARQUEE_IMAGES = [
-  "https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif",
-  "https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif",
-  "https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif",
-  "https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif",
-  "https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif",
-  "https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif",
-  "https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif",
-  "https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif",
-  "https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif",
-  "https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif",
-  "https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif",
-  "https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif",
-  "https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif",
-  "https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif",
-  "https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif",
-  "https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif",
-  "https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif",
-  "https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif",
-  "https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif",
-  "https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif",
-  "https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif",
+type Skill = { name: string; sub: string; slug: string; color: string };
+
+const SKILLS: Skill[] = [
+  { name: "TypeScript", sub: "Type-safe application code", slug: "typescript", color: "#3178C6" },
+  { name: "React", sub: "Reusable interface systems", slug: "react", color: "#61DAFB" },
+  { name: "Next.js", sub: "Full-stack product engineering", slug: "nextdotjs", color: "#FFFFFF" },
+  { name: "Node.js", sub: "Server-side JavaScript runtime", slug: "nodedotjs", color: "#5FA04E" },
+  { name: "Express", sub: "REST API foundations", slug: "express", color: "#FFFFFF" },
+  { name: "Socket.IO", sub: "Real-time communication", slug: "socketdotio", color: "#FFFFFF" },
+  { name: "MongoDB", sub: "Flexible document data", slug: "mongodb", color: "#47A248" },
+  { name: "Tailwind CSS", sub: "Scalable design system", slug: "tailwindcss", color: "#06B6D4" },
+  { name: "Framer Motion", sub: "Motion & micro-interactions", slug: "framer", color: "#0055FF" },
+  { name: "React Native", sub: "Cross-platform mobile apps", slug: "react", color: "#61DAFB" },
+  { name: "Docker", sub: "Containerized deployments", slug: "docker", color: "#2496ED" },
+  { name: "Linux", sub: "Server & tooling environment", slug: "linux", color: "#FCC624" },
+  { name: "Git", sub: "Version-controlled workflow", slug: "git", color: "#F05032" },
+  { name: "GitHub", sub: "Source hosting & CI", slug: "github", color: "#FFFFFF" },
+  { name: "Vercel", sub: "Edge deployment platform", slug: "vercel", color: "#FFFFFF" },
+  { name: "C++", sub: "Systems & performance code", slug: "cplusplus", color: "#00599C" },
+  { name: "Java", sub: "OOP & desktop applications", slug: "openjdk", color: "#FFFFFF" },
+  { name: "SQLite", sub: "Embedded relational storage", slug: "sqlite", color: "#003B57" },
 ];
 
-function MarqueeRow({ images, reverse, offset }: { images: string[]; reverse: boolean; offset: number }) {
-  const tripled = [...images, ...images, ...images];
+function SkillCard({ skill, index }: { skill: Skill; index: number }) {
+  const num = String((index % SKILLS.length) + 1).padStart(3, "0");
+  return (
+    <div
+      className="relative shrink-0 rounded-2xl overflow-hidden"
+      style={{
+        width: 420,
+        height: 270,
+        background: "#121212",
+        border: "1px solid rgba(215, 226, 234, 0.08)",
+      }}
+    >
+      {/* subtle grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(215,226,234,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(215,226,234,0.04) 1px, transparent 1px)",
+          backgroundSize: "36px 36px",
+        }}
+      />
+
+      {/* colored logo circle */}
+      <div
+        className="absolute rounded-full flex items-center justify-center"
+        style={{
+          right: -40,
+          top: -30,
+          width: 220,
+          height: 220,
+          background: `radial-gradient(circle at 30% 30%, ${skill.color}, ${skill.color}99 55%, ${skill.color}22 100%)`,
+          filter: "saturate(1.1)",
+        }}
+      >
+        <img
+          src={`https://cdn.simpleicons.org/${skill.slug}/ffffff`}
+          alt=""
+          loading="lazy"
+          style={{ width: 78, height: 78, opacity: 0.95 }}
+        />
+      </div>
+
+      {/* top label */}
+      <div
+        className="absolute top-5 left-5 uppercase tracking-[0.18em]"
+        style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}
+      >
+        {num} / Capability
+      </div>
+      <div
+        className="absolute left-5"
+        style={{ top: 46, width: 60, height: 1, background: "rgba(215,226,234,0.25)" }}
+      />
+
+      {/* name + sub */}
+      <div className="absolute left-5 right-5" style={{ bottom: 56 }}>
+        <div
+          className="hero-heading font-black uppercase tracking-tight"
+          style={{ fontSize: 44, lineHeight: 1 }}
+        >
+          {skill.name}
+        </div>
+        <div
+          className="mt-2 font-light"
+          style={{ color: "#D7E2EA", opacity: 0.7, fontSize: 13 }}
+        >
+          {skill.sub}
+        </div>
+      </div>
+
+      {/* arrow */}
+      <div
+        className="absolute rounded-full flex items-center justify-center"
+        style={{
+          right: 18,
+          bottom: 18,
+          width: 42,
+          height: 42,
+          border: "1px solid rgba(215,226,234,0.3)",
+          color: "#D7E2EA",
+        }}
+      >
+        <ArrowUpRight size={20} strokeWidth={1.75} />
+      </div>
+    </div>
+  );
+}
+
+function MarqueeRow({ skills, reverse, offset, startIndex }: { skills: Skill[]; reverse: boolean; offset: number; startIndex: number }) {
+  const tripled = [...skills, ...skills, ...skills];
   const x = reverse ? -(offset - 200) : offset - 200;
   return (
     <div className="flex gap-3" style={{ transform: `translateX(${x}px)`, willChange: "transform" }}>
-      {tripled.map((src, i) => (
-        <img
-          key={i}
-          src={src}
-          alt=""
-          loading="lazy"
-          className="rounded-2xl object-cover shrink-0"
-          style={{ width: 420, height: 270 }}
-        />
+      {tripled.map((s, i) => (
+        <SkillCard key={i} skill={s} index={startIndex + (i % skills.length)} />
       ))}
     </div>
   );
@@ -277,14 +358,15 @@ function MarqueeSection() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+  const half = Math.ceil(SKILLS.length / 2);
   return (
     <section
       ref={ref}
       className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3"
       style={{ background: "#0C0C0C" }}
     >
-      <MarqueeRow images={MARQUEE_IMAGES.slice(0, 11)} reverse={false} offset={offset} />
-      <MarqueeRow images={MARQUEE_IMAGES.slice(11)} reverse={true} offset={offset} />
+      <MarqueeRow skills={SKILLS.slice(0, half)} reverse={false} offset={offset} startIndex={0} />
+      <MarqueeRow skills={SKILLS.slice(half)} reverse={true} offset={offset} startIndex={half} />
     </section>
   );
 }
