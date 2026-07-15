@@ -160,7 +160,7 @@ function HeroSection() {
     <section className="h-screen flex flex-col relative" style={{ overflowX: "clip" }}>
       <FadeIn delay={0} y={-20}>
         <nav className="flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8">
-          {["About", "Price", "Projects", "Contact"].map((l) => (
+          {["About", "Skills", "Projects", "Contact"].map((l) => (
             <a
               key={l}
               href={`#${l.toLowerCase()}`}
