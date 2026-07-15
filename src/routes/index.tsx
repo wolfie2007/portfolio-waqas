@@ -308,7 +308,7 @@ function AboutSection() {
             About me
           </h2>
         </FadeIn>
-        <AnimatedText text="With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!" />
+        <AnimatedText text="I'm a Computer Science student at Air University with hands-on experience building full-stack and real-time web apps using modern JavaScript. I've shipped production projects with real-time communication, API integrations, and scalable backends — and I love working with teams that want to build things that actually get used." />
       </div>
       <div className="mt-16 sm:mt-20 md:mt-24 relative z-10">
         <ContactButton />
