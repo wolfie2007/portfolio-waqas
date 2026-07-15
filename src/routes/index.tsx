@@ -376,6 +376,8 @@ type Project = {
   n: string;
   category: string;
   name: string;
+  href: string;
+  linkLabel?: string;
   col1a: string;
   col1b: string;
   col2: string;
