@@ -201,7 +201,7 @@ function HeroSection() {
       >
         <Magnet padding={150} strength={3}>
           <img
-            src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
+            src="https://fifth-gentle-45902158.figma.site/_components/v2/4de492f6d9cf8244ad5293233e5c6f52407d42fc/4.4457fbce.png"
             alt="Jack portrait"
             className="w-full h-auto select-none"
             draggable={false}
