@@ -439,7 +439,7 @@ function ProjectCard({ p, i, total, progress }: { p: Project; i: number; total: 
                 {p.name}
               </div>
             </div>
-            <LiveProjectButton />
+            <LiveProjectButton href={p.href} label={p.linkLabel} />
           </div>
           <div className="grid grid-cols-[2fr_3fr] gap-3 sm:gap-4">
             <div className="flex flex-col gap-3 sm:gap-4">
