@@ -34,3 +34,71 @@ html, body, #root {
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
+
+/* Resume peek button */
+.resume-wrap {
+  position: relative;
+  display: inline-block;
+}
+.resume-btn {
+  --btn-h: 52px;
+  position: relative;
+  z-index: 2;
+  height: var(--btn-h);
+  box-sizing: border-box;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.resume-wrap:hover .resume-btn {
+  transform: translateY(-2px);
+}
+.resume-peek-window {
+  position: absolute;
+  bottom: 52px;
+  left: 4px;
+  right: 4px;
+  height: 110px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+.resume-preview {
+  position: absolute;
+  bottom: -90px;
+  left: 50%;
+  width: 72px;
+  height: 96px;
+  background: #ffffff;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+  transform: translateX(-50%) rotate(-3deg);
+  padding: 8px 7px;
+  box-sizing: border-box;
+  transition: bottom 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.resume-wrap:hover .resume-preview {
+  bottom: -8px;
+}
+.resume-preview .rp-line {
+  background: #d9d9d9;
+  border-radius: 1.5px;
+  height: 3px;
+  margin-bottom: 5px;
+}
+.resume-preview .rp-name {
+  background: #222;
+  height: 6px;
+  width: 65%;
+  margin-bottom: 4px;
+  border-radius: 1.5px;
+}
+.resume-preview .rp-title {
+  background: #888;
+  height: 3px;
+  width: 45%;
+  margin-bottom: 8px;
+  border-radius: 1.5px;
+}
+.rp-w90 { width: 90%; }
+.rp-w75 { width: 75%; }
+.rp-w95 { width: 95%; }
+
