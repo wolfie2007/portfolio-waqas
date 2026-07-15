@@ -53,6 +53,38 @@ function ContactButton() {
   );
 }
 
+function ResumeButton() {
+  return (
+    <div className="resume-wrap">
+      <div className="resume-peek-window" aria-hidden="true">
+        <div className="resume-preview">
+          <div className="rp-name" />
+          <div className="rp-title" />
+          <div className="rp-line rp-w90" />
+          <div className="rp-line rp-w75" />
+          <div className="rp-line rp-w95" />
+          <div className="rp-line rp-w90" />
+        </div>
+      </div>
+      <a
+        href="/Waqas_Ameer_Resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        download
+        className="resume-btn inline-flex items-center justify-center rounded-full text-white font-medium uppercase tracking-widest px-8 sm:px-10 md:px-12 text-xs sm:text-sm md:text-base"
+        style={{
+          background: "linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)",
+          boxShadow: "0px 4px 4px rgba(181, 1, 167, 0.25), 4px 4px 12px #7721B1 inset",
+          outline: "2px solid #ffffff",
+          outlineOffset: "-3px",
+        }}
+      >
+        Download Resume
+      </a>
+    </div>
+  );
+}
+
 function LiveProjectButton({ href, label = "Live Project" }: { href: string; label?: string }) {
   return (
     <a
