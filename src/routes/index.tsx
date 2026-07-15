@@ -320,11 +320,11 @@ function AboutSection() {
 /* ---------- Services ---------- */
 
 const SERVICES = [
-  { n: "01", name: "3D Modeling", d: "Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations." },
-  { n: "02", name: "Rendering", d: "High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life." },
-  { n: "03", name: "Motion Design", d: "Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences." },
-  { n: "04", name: "Branding", d: "Crafting cohesive visual identities — from logos to full brand systems — that communicate a clear and memorable presence." },
-  { n: "05", name: "Web Design", d: "Designing clean, modern, and conversion-focused websites with attention to layout, typography, and user experience." },
+  { n: "01", name: "Full-Stack Web Apps", d: "End-to-end web applications built with React, Next.js, and Node.js — from schema and API to a polished, responsive frontend." },
+  { n: "02", name: "Real-Time Systems", d: "Low-latency multiplayer and collaborative features powered by Socket.IO — synchronized sessions, live rooms, and reliable event flows." },
+  { n: "03", name: "API Integration", p: "", d: "REST APIs, third-party services, and platforms like Judge0 and Gemini wired in with clean contracts, retries, and sensible fallbacks." },
+  { n: "04", name: "Frontend Engineering", d: "Type-safe React and Next.js interfaces with Tailwind CSS and Framer Motion — fast, accessible, and pixel-precise across devices." },
+  { n: "05", name: "Deployment & DevOps", d: "Dockerized services deployed to Vercel and Linux VPS with Git-based workflows, so releases are repeatable and shipping is boring." },
 ];
 
 function ServicesSection() {
