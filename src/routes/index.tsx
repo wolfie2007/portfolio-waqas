@@ -37,8 +37,9 @@ function FadeIn({ children, delay = 0, duration = 0.7, x = 0, y = 30, as, classN
 
 function ContactButton() {
   return (
-    <button
-      className="rounded-full text-white font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base"
+    <a
+      href="mailto:waqasameer654@gmail.com"
+      className="inline-block rounded-full text-white font-medium uppercase tracking-widest px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base"
       style={{
         background: "linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)",
         boxShadow: "0px 4px 4px rgba(181, 1, 167, 0.25), 4px 4px 12px #7721B1 inset",
@@ -47,7 +48,7 @@ function ContactButton() {
       }}
     >
       Contact Me
-    </button>
+    </a>
   );
 }
 
@@ -159,7 +160,7 @@ function HeroSection() {
     <section className="h-screen flex flex-col relative" style={{ overflowX: "clip" }}>
       <FadeIn delay={0} y={-20}>
         <nav className="flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8">
-          {["About", "Price", "Projects", "Contact"].map((l) => (
+          {["About", "Skills", "Projects", "Contact"].map((l) => (
             <a
               key={l}
               href={`#${l.toLowerCase()}`}
@@ -175,7 +176,7 @@ function HeroSection() {
       <div className="overflow-hidden mt-6 sm:mt-4 md:-mt-5 px-6 md:px-10">
         <FadeIn delay={0.15} y={40}>
           <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw]">
-            Hi, i&apos;m jack
+            Hi, i&apos;m waqas
           </h1>
         </FadeIn>
       </div>
@@ -186,7 +187,7 @@ function HeroSection() {
             className="font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[260px]"
             style={{ color: "#D7E2EA", fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)" }}
           >
-            a 3d creator driven by crafting striking and unforgettable projects
+            a full-stack developer building real-time, production-ready web apps
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20}>
@@ -307,7 +308,7 @@ function AboutSection() {
             About me
           </h2>
         </FadeIn>
-        <AnimatedText text="With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!" />
+        <AnimatedText text="I'm a Computer Science student at Air University with hands-on experience building full-stack and real-time web apps using modern JavaScript. I've shipped production projects with real-time communication, API integrations, and scalable backends — and I love working with teams that want to build things that actually get used." />
       </div>
       <div className="mt-16 sm:mt-20 md:mt-24 relative z-10">
         <ContactButton />
@@ -319,11 +320,11 @@ function AboutSection() {
 /* ---------- Services ---------- */
 
 const SERVICES = [
-  { n: "01", name: "3D Modeling", d: "Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations." },
-  { n: "02", name: "Rendering", d: "High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life." },
-  { n: "03", name: "Motion Design", d: "Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences." },
-  { n: "04", name: "Branding", d: "Crafting cohesive visual identities — from logos to full brand systems — that communicate a clear and memorable presence." },
-  { n: "05", name: "Web Design", d: "Designing clean, modern, and conversion-focused websites with attention to layout, typography, and user experience." },
+  { n: "01", name: "Full-Stack Web Apps", d: "End-to-end web applications built with React, Next.js, and Node.js — from schema and API to a polished, responsive frontend." },
+  { n: "02", name: "Real-Time Systems", d: "Low-latency multiplayer and collaborative features powered by Socket.IO — synchronized sessions, live rooms, and reliable event flows." },
+  { n: "03", name: "API Integration", p: "", d: "REST APIs, third-party services, and platforms like Judge0 and Gemini wired in with clean contracts, retries, and sensible fallbacks." },
+  { n: "04", name: "Frontend Engineering", d: "Type-safe React and Next.js interfaces with Tailwind CSS and Framer Motion — fast, accessible, and pixel-precise across devices." },
+  { n: "05", name: "Deployment & DevOps", d: "Dockerized services deployed to Vercel and Linux VPS with Git-based workflows, so releases are repeatable and shipping is boring." },
 ];
 
 function ServicesSection() {
@@ -378,24 +379,24 @@ type Project = {
 const PROJECTS: Project[] = [
   {
     n: "01",
-    category: "Client",
-    name: "Nextlevel Studio",
+    category: "Full-Stack · Real-Time",
+    name: "CodeDuel",
     col1a: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85",
     col1b: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85",
     col2: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85",
   },
   {
     n: "02",
-    category: "Personal",
-    name: "Aura Brand Identity",
+    category: "Desktop · Systems",
+    name: "Encrypto",
     col1a: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85",
     col1b: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85",
     col2: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85",
   },
   {
     n: "03",
-    category: "Client",
-    name: "Solaris Digital",
+    category: "Team · JavaFX",
+    name: "MediTrack",
     col1a: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85",
     col1b: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85",
     col2: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85",
