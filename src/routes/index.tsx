@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode, type ElementType } from "react";
 import { motion, useScroll, useTransform, type MotionProps } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
