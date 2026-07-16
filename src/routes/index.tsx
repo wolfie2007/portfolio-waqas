@@ -213,7 +213,7 @@ function HeroSection() {
 
       <div className="mt-6 sm:mt-4 md:-mt-5 px-6 md:px-10">
         <FadeIn delay={0.15} y={40}>
-          <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[11vw] sm:text-[12vw] md:text-[12.5vw] lg:text-[13vw]" style={{ width: "fit-content", maxWidth: "100%" }}>
+          <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[13.5vw] md:text-[14vw] lg:text-[15vw]" style={{ width: "fit-content", maxWidth: "100%" }}>
             Hi, i&apos;m waqas
           </h1>
         </FadeIn>
