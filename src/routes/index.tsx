@@ -516,28 +516,14 @@ function MarqueeRow({ skills, reverse, startIndex }: { skills: Skill[]; reverse:
 }
 
 function MarqueeSection() {
-  const ref = useRef<HTMLElement>(null);
-  const [offset, setOffset] = useState(0);
-  useEffect(() => {
-    const onScroll = () => {
-      const el = ref.current;
-      if (!el) return;
-      const top = el.getBoundingClientRect().top + window.scrollY;
-      setOffset((window.scrollY - top + window.innerHeight) * 0.3);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
   const half = Math.ceil(SKILLS.length / 2);
   return (
     <section
-      ref={ref}
-      className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3"
+      className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3 marquee-section"
       style={{ background: "#0C0C0C" }}
     >
-      <MarqueeRow skills={SKILLS.slice(0, half)} reverse={false} offset={offset} startIndex={0} />
-      <MarqueeRow skills={SKILLS.slice(half)} reverse={true} offset={offset} startIndex={half} />
+      <MarqueeRow skills={SKILLS.slice(0, half)} reverse={false} startIndex={0} />
+      <MarqueeRow skills={SKILLS.slice(half)} reverse={true} startIndex={half} />
     </section>
   );
 }
