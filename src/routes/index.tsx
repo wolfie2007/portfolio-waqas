@@ -253,123 +253,262 @@ function HeroSection() {
 
 /* ---------- Marquee ---------- */
 
-type Skill = { name: string; sub: string; slug: string; color: string };
+type Skill = { name: string; sub: string; slug: string; color: string; bullets: string[] };
 
 const SKILLS: Skill[] = [
-  { name: "TypeScript", sub: "Type-safe application code", slug: "typescript", color: "#3178C6" },
-  { name: "React", sub: "Reusable interface systems", slug: "react", color: "#61DAFB" },
-  { name: "Next.js", sub: "Full-stack product engineering", slug: "nextdotjs", color: "#FFFFFF" },
-  { name: "Node.js", sub: "Server-side JavaScript runtime", slug: "nodedotjs", color: "#5FA04E" },
-  { name: "Express", sub: "REST API foundations", slug: "express", color: "#FFFFFF" },
-  { name: "Socket.IO", sub: "Real-time communication", slug: "socketdotio", color: "#FFFFFF" },
-  { name: "MongoDB", sub: "Flexible document data", slug: "mongodb", color: "#47A248" },
-  { name: "Tailwind CSS", sub: "Scalable design system", slug: "tailwindcss", color: "#06B6D4" },
-  { name: "Framer Motion", sub: "Motion & micro-interactions", slug: "framer", color: "#0055FF" },
-  { name: "React Native", sub: "Cross-platform mobile apps", slug: "react", color: "#61DAFB" },
-  { name: "Docker", sub: "Containerized deployments", slug: "docker", color: "#2496ED" },
-  { name: "Linux", sub: "Server & tooling environment", slug: "linux", color: "#FCC624" },
-  { name: "Git", sub: "Version-controlled workflow", slug: "git", color: "#F05032" },
-  { name: "GitHub", sub: "Source hosting & CI", slug: "github", color: "#FFFFFF" },
-  { name: "Vercel", sub: "Edge deployment platform", slug: "vercel", color: "#FFFFFF" },
-  { name: "C++", sub: "Systems & performance code", slug: "cplusplus", color: "#00599C" },
-  { name: "Java", sub: "OOP & desktop applications", slug: "openjdk", color: "#FFFFFF" },
-  { name: "SQLite", sub: "Embedded relational storage", slug: "sqlite", color: "#003B57" },
+  { name: "TypeScript", sub: "Type-safe application code", slug: "typescript", color: "#3178C6", bullets: [
+    "Wrote CodeDuel end-to-end in TS — shared types between client & server",
+    "Modeled Encrypto's cipher configs as discriminated unions for safe UI switching",
+    "Strict mode across every project to catch bugs at compile time",
+  ]},
+  { name: "React", sub: "Reusable interface systems", slug: "react", color: "#61DAFB", bullets: [
+    "Built CodeDuel's realtime battle arena and live scoreboard UI",
+    "Composed MediTrack's dashboard from small, reusable hook-driven components",
+    "Managed cipher input/output state in Encrypto with controlled components",
+  ]},
+  { name: "Next.js", sub: "Full-stack product engineering", slug: "nextdotjs", color: "#FFFFFF", bullets: [
+    "Shipped CodeDuel with SSR pages and API routes in one codebase",
+    "Used server actions for MediTrack record mutations",
+    "Deployed image-optimized landing pages on the edge",
+  ]},
+  { name: "Node.js", sub: "Server-side JavaScript runtime", slug: "nodedotjs", color: "#5FA04E", bullets: [
+    "Powered CodeDuel's matchmaking and code-execution backend",
+    "Built MediTrack's REST API for patient & prescription records",
+    "Wrote CLI scripts to seed test data across projects",
+  ]},
+  { name: "Express", sub: "REST API foundations", slug: "express", color: "#FFFFFF", bullets: [
+    "Structured MediTrack's routes, middleware and auth guards",
+    "Exposed CodeDuel's duel lifecycle endpoints (create / join / submit)",
+    "Wrote reusable error-handling and validation middleware",
+  ]},
+  { name: "Socket.IO", sub: "Real-time communication", slug: "socketdotio", color: "#FFFFFF", bullets: [
+    "Ran CodeDuel's live duels — code sync, timers and results in real time",
+    "Broadcast opponent typing & submission events to rooms",
+    "Handled reconnection so mid-duel drops don't kill the match",
+  ]},
+  { name: "MongoDB", sub: "Flexible document data", slug: "mongodb", color: "#47A248", bullets: [
+    "Stored CodeDuel users, duels and problem sets as documents",
+    "Modeled MediTrack patients + nested visits without rigid schemas",
+    "Indexed frequent lookups to keep queries snappy",
+  ]},
+  { name: "Tailwind CSS", sub: "Scalable design system", slug: "tailwindcss", color: "#06B6D4", bullets: [
+    "Styled this portfolio and MediTrack entirely with utility classes",
+    "Built a shared token setup for consistent spacing & color",
+    "Rapidly prototyped responsive layouts without leaving JSX",
+  ]},
+  { name: "Framer Motion", sub: "Motion & micro-interactions", slug: "framer", color: "#0055FF", bullets: [
+    "Choreographed the hero, marquee and card animations on this site",
+    "Added page transitions and hover micro-interactions to CodeDuel",
+    "Used layout animations for smooth list reordering",
+  ]},
+  { name: "React Native", sub: "Cross-platform mobile apps", slug: "react", color: "#61DAFB", bullets: [
+    "Prototyped a mobile companion for MediTrack (iOS + Android)",
+    "Reused core hooks and API layer from the web app",
+    "Integrated native navigation and local notifications",
+  ]},
+  { name: "Docker", sub: "Containerized deployments", slug: "docker", color: "#2496ED", bullets: [
+    "Containerized CodeDuel's code-runner in isolated sandboxes",
+    "Ran MediTrack's API + Mongo locally with docker-compose",
+    "Built slim multi-stage images for production deploys",
+  ]},
+  { name: "Linux", sub: "Server & tooling environment", slug: "linux", color: "#FCC624", bullets: [
+    "Daily driver — every project developed and deployed from Linux",
+    "Managed VPS boxes running CodeDuel + MediTrack backends",
+    "Wrote bash scripts to automate builds and log rotation",
+  ]},
+  { name: "Git", sub: "Version-controlled workflow", slug: "git", color: "#F05032", bullets: [
+    "Feature-branch workflow with rebases across every project",
+    "Wrote atomic commits so history reads like a changelog",
+    "Recovered work with reflog more than once — pays off",
+  ]},
+  { name: "GitHub", sub: "Source hosting & CI", slug: "github", color: "#FFFFFF", bullets: [
+    "Hosts CodeDuel, Encrypto and MediTrack — public repos & issues",
+    "Wired GitHub Actions for lint + build on every PR",
+    "Managed releases and tags for versioned deploys",
+  ]},
+  { name: "Vercel", sub: "Edge deployment platform", slug: "vercel", color: "#FFFFFF", bullets: [
+    "Deployed this portfolio and Next.js projects to the edge",
+    "Preview URLs on every PR made design review painless",
+    "Configured custom domains and env vars per environment",
+  ]},
+  { name: "C++", sub: "Systems & performance code", slug: "cplusplus", color: "#00599C", bullets: [
+    "Solved DSA problems that later became CodeDuel's problem set",
+    "Built university projects focused on memory and performance",
+    "Comfortable with STL, pointers and OOP fundamentals",
+  ]},
+  { name: "Java", sub: "OOP & desktop applications", slug: "openjdk", color: "#FFFFFF", bullets: [
+    "Built MediTrack's original desktop prototype in Java + Swing",
+    "Applied OOP patterns for clean patient/record modeling",
+    "Bridged the app to SQLite for local persistence",
+  ]},
+  { name: "SQLite", sub: "Embedded relational storage", slug: "sqlite", color: "#003B57", bullets: [
+    "Backed MediTrack's desktop version with a local SQLite DB",
+    "Designed normalized tables for patients, visits and meds",
+    "Wrote parameterized queries to keep inputs safe",
+  ]},
 ];
 
 function SkillCard({ skill, index }: { skill: Skill; index: number }) {
   const num = String((index % SKILLS.length) + 1).padStart(3, "0");
+  const [flipped, setFlipped] = useState(false);
   return (
     <div
-      className="relative shrink-0 rounded-2xl overflow-hidden"
-      style={{
-        width: 420,
-        height: 270,
-        background: "#121212",
-        border: "1px solid rgba(215, 226, 234, 0.08)",
-      }}
+      className="relative shrink-0 cursor-pointer"
+      style={{ width: 420, height: 270, perspective: 1200 }}
+      onClick={() => setFlipped((f) => !f)}
     >
-      {/* subtle grid */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="relative w-full h-full transition-transform duration-700"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(215,226,234,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(215,226,234,0.04) 1px, transparent 1px)",
-          backgroundSize: "36px 36px",
-        }}
-      />
-
-      {/* colored logo circle */}
-      <div
-        className="absolute rounded-full flex items-center justify-center"
-        style={{
-          right: -40,
-          top: -30,
-          width: 220,
-          height: 220,
-          background: `radial-gradient(circle at 30% 30%, ${skill.color}, ${skill.color}99 55%, ${skill.color}22 100%)`,
-          filter: "saturate(1.1)",
+          transformStyle: "preserve-3d",
+          transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
         }}
       >
-        <img
-          src={`https://cdn.simpleicons.org/${skill.slug}/ffffff`}
-          alt=""
-          loading="lazy"
-          style={{ width: 78, height: 78, opacity: 0.95 }}
-        />
-      </div>
-
-      {/* top label */}
-      <div
-        className="absolute top-5 left-5 uppercase tracking-[0.18em]"
-        style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}
-      >
-        {num} / Capability
-      </div>
-      <div
-        className="absolute left-5"
-        style={{ top: 46, width: 60, height: 1, background: "rgba(215,226,234,0.25)" }}
-      />
-
-      {/* name + sub */}
-      <div className="absolute left-5 right-5" style={{ bottom: 56 }}>
+        {/* FRONT */}
         <div
-          className="hero-heading font-black uppercase tracking-tight"
-          style={{ fontSize: 44, lineHeight: 1 }}
+          className="absolute inset-0 rounded-2xl overflow-hidden"
+          style={{
+            background: "#121212",
+            border: "1px solid rgba(215, 226, 234, 0.08)",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+          }}
         >
-          {skill.name}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(215,226,234,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(215,226,234,0.04) 1px, transparent 1px)",
+              backgroundSize: "36px 36px",
+            }}
+          />
+          <div
+            className="absolute rounded-full flex items-center justify-center"
+            style={{
+              right: -40,
+              top: -30,
+              width: 220,
+              height: 220,
+              background: `radial-gradient(circle at 30% 30%, ${skill.color}, ${skill.color}99 55%, ${skill.color}22 100%)`,
+              filter: "saturate(1.1)",
+            }}
+          >
+            <img
+              src={`https://cdn.simpleicons.org/${skill.slug}/ffffff`}
+              alt=""
+              loading="lazy"
+              style={{ width: 78, height: 78, opacity: 0.95 }}
+            />
+          </div>
+          <div
+            className="absolute top-5 left-5 uppercase tracking-[0.18em]"
+            style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}
+          >
+            {num} / Capability
+          </div>
+          <div
+            className="absolute left-5"
+            style={{ top: 46, width: 60, height: 1, background: "rgba(215,226,234,0.25)" }}
+          />
+          <div className="absolute left-5 right-5" style={{ bottom: 56 }}>
+            <div
+              className="hero-heading font-black uppercase tracking-tight"
+              style={{ fontSize: 44, lineHeight: 1 }}
+            >
+              {skill.name}
+            </div>
+            <div
+              className="mt-2 font-light"
+              style={{ color: "#D7E2EA", opacity: 0.7, fontSize: 13 }}
+            >
+              {skill.sub}
+            </div>
+          </div>
+          <div
+            className="absolute rounded-full flex items-center justify-center"
+            style={{
+              right: 18,
+              bottom: 18,
+              width: 42,
+              height: 42,
+              border: "1px solid rgba(215,226,234,0.3)",
+              color: "#D7E2EA",
+            }}
+          >
+            <ArrowUpRight size={20} strokeWidth={1.75} />
+          </div>
         </div>
-        <div
-          className="mt-2 font-light"
-          style={{ color: "#D7E2EA", opacity: 0.7, fontSize: 13 }}
-        >
-          {skill.sub}
-        </div>
-      </div>
 
-      {/* arrow */}
-      <div
-        className="absolute rounded-full flex items-center justify-center"
-        style={{
-          right: 18,
-          bottom: 18,
-          width: 42,
-          height: 42,
-          border: "1px solid rgba(215,226,234,0.3)",
-          color: "#D7E2EA",
-        }}
-      >
-        <ArrowUpRight size={20} strokeWidth={1.75} />
+        {/* BACK */}
+        <div
+          className="absolute inset-0 rounded-2xl overflow-hidden p-6 flex flex-col"
+          style={{
+            background: `linear-gradient(140deg, ${skill.color}22 0%, #121212 55%, #0d0d0d 100%)`,
+            border: `1px solid ${skill.color}55`,
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+          }}
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <div
+              className="rounded-full flex items-center justify-center shrink-0"
+              style={{
+                width: 40,
+                height: 40,
+                background: `${skill.color}33`,
+                border: `1px solid ${skill.color}66`,
+              }}
+            >
+              <img
+                src={`https://cdn.simpleicons.org/${skill.slug}/ffffff`}
+                alt=""
+                loading="lazy"
+                style={{ width: 20, height: 20 }}
+              />
+            </div>
+            <div
+              className="hero-heading font-black uppercase tracking-tight"
+              style={{ fontSize: 26, lineHeight: 1 }}
+            >
+              {skill.name}
+            </div>
+          </div>
+          <ul className="flex flex-col gap-2.5 flex-1">
+            {skill.bullets.map((b, i) => (
+              <li
+                key={i}
+                className="flex gap-2.5 font-light"
+                style={{ color: "#D7E2EA", opacity: 0.9, fontSize: 13, lineHeight: 1.45 }}
+              >
+                <span style={{ color: skill.color, marginTop: 6, width: 5, height: 5, borderRadius: 999, background: skill.color, flexShrink: 0, display: "inline-block" }} />
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+          <div
+            className="uppercase tracking-[0.18em] mt-3"
+            style={{ color: "#D7E2EA", opacity: 0.45, fontSize: 10 }}
+          >
+            Tap to flip back
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
-function MarqueeRow({ skills, reverse, offset, startIndex }: { skills: Skill[]; reverse: boolean; offset: number; startIndex: number }) {
-  const tripled = [...skills, ...skills, ...skills];
-  const x = reverse ? -(offset - 200) : offset - 200;
+function MarqueeRow({ skills, reverse, startIndex }: { skills: Skill[]; reverse: boolean; startIndex: number }) {
+  const doubled = [...skills, ...skills];
   return (
-    <div className="flex gap-3" style={{ transform: `translateX(${x}px)`, willChange: "transform" }}>
-      {tripled.map((s, i) => (
+    <div
+      className="flex gap-3 marquee-track"
+      style={{
+        animation: `${reverse ? "marquee-reverse" : "marquee-forward"} 60s linear infinite`,
+        width: "max-content",
+      }}
+    >
+      {doubled.map((s, i) => (
         <SkillCard key={i} skill={s} index={startIndex + (i % skills.length)} />
       ))}
     </div>
@@ -377,28 +516,14 @@ function MarqueeRow({ skills, reverse, offset, startIndex }: { skills: Skill[]; 
 }
 
 function MarqueeSection() {
-  const ref = useRef<HTMLElement>(null);
-  const [offset, setOffset] = useState(0);
-  useEffect(() => {
-    const onScroll = () => {
-      const el = ref.current;
-      if (!el) return;
-      const top = el.getBoundingClientRect().top + window.scrollY;
-      setOffset((window.scrollY - top + window.innerHeight) * 0.3);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
   const half = Math.ceil(SKILLS.length / 2);
   return (
     <section
-      ref={ref}
-      className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3"
+      className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3 marquee-section"
       style={{ background: "#0C0C0C" }}
     >
-      <MarqueeRow skills={SKILLS.slice(0, half)} reverse={false} offset={offset} startIndex={0} />
-      <MarqueeRow skills={SKILLS.slice(half)} reverse={true} offset={offset} startIndex={half} />
+      <MarqueeRow skills={SKILLS.slice(0, half)} reverse={false} startIndex={0} />
+      <MarqueeRow skills={SKILLS.slice(half)} reverse={true} startIndex={half} />
     </section>
   );
 }
