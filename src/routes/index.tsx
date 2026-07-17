@@ -424,6 +424,10 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
               src={`https://cdn.simpleicons.org/${skill.slug}/ffffff`}
               alt=""
               loading="lazy"
+               onError={(e) => {
+    e.currentTarget.onerror = null;
+    e.currentTarget.src = `https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/${skill.slug}.svg`;
+  }}
               style={{ width: 78, height: 78, opacity: 0.95 }}
             />
           </div>
@@ -500,6 +504,10 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
                 src={`https://cdn.simpleicons.org/${skill.slug}/ffffff`}
                 alt=""
                 loading="lazy"
+                 onError={(e) => {
+    e.currentTarget.onerror = null;
+    e.currentTarget.src = `https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/${skill.slug}.svg`;
+  }}
                 style={{ width: 20, height: 20 }}
               />
             </div>
