@@ -587,7 +587,7 @@ function AboutSection() {
             About me
           </h2>
         </FadeIn>
-        <AnimatedText text="<AnimatedText text="I'm a Computer Science student and founder of SiteMindAI, a RAG-powered SaaS that turns any website into a grounded AI assistant. I build full-stack products with modern JavaScript, real-time systems, scalable backends and AI integrations, turning ideas into production-ready software, and I love working with teams that want to build things that actually get used." />
+        <AnimatedText text="I'm a Computer Science student and founder of SiteMindAI, a RAG-powered SaaS that turns any website into a grounded AI assistant. I build full-stack products with modern JavaScript, real-time systems, scalable backends and AI integrations, turning ideas into production-ready software, and I love working with teams that want to build things that actually get used." />
       </div>
       <div className="mt-16 sm:mt-20 md:mt-24 relative z-10">
         <ResumeButton />
