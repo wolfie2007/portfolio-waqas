@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode, type ElementType } from "react";
 import { motion, useScroll, useTransform, type MotionProps } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Hand } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -427,17 +427,26 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
             </div>
           </div>
           <div
-            className="absolute rounded-full flex items-center justify-center"
-            style={{
-              right: 18,
-              bottom: 18,
-              width: 42,
-              height: 42,
-              border: "1px solid rgba(215,226,234,0.3)",
-              color: "#D7E2EA",
-            }}
+            className="absolute flex items-center gap-2"
+            style={{ right: 18, bottom: 18 }}
           >
-            <ArrowUpRight size={20} strokeWidth={1.75} />
+            <span
+              className="uppercase tracking-[0.18em]"
+              style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 10 }}
+            >
+              Tap
+            </span>
+            <div
+              className="rounded-full flex items-center justify-center"
+              style={{
+                width: 42,
+                height: 42,
+                border: "1px solid rgba(215,226,234,0.3)",
+                color: "#D7E2EA",
+              }}
+            >
+              <Hand size={18} strokeWidth={1.75} />
+            </div>
           </div>
         </div>
 
@@ -523,6 +532,12 @@ function MarqueeSection() {
     <section
       className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3 marquee-section"
     >
+      <h2
+        className="hero-heading font-black uppercase text-center leading-none tracking-tight mb-16 sm:mb-20 md:mb-28"
+        style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
+      >
+        Tech Stack
+      </h2>
 
       <MarqueeRow skills={SKILLS.slice(0, half)} reverse={false} startIndex={0} />
       <MarqueeRow skills={SKILLS.slice(half)} reverse={true} startIndex={half} />
