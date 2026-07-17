@@ -11,11 +11,11 @@
 }
 
 :root {
-  --background: #1E0A2E;
+  --background: #0A0B14;
   --foreground: #F2E7F5;
   --hero-cyan: #06B6D4;
-  --vibrant-mid: #5B1361;
-  --vibrant-deep: #1E0A2E;
+  --vibrant-mid: #1E3A5F;
+  --vibrant-deep: #0A0B14;
 }
 
 html, body, #root {
