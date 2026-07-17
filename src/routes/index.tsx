@@ -731,6 +731,7 @@ function Index() {
   return (
     <main style={{ overflowX: "clip", fontFamily: "'Kanit', sans-serif" }}>
       <HeroSection />
+      <div className="hero-fade" aria-hidden="true" />
       <MarqueeSection />
       <AboutSection />
       <ServicesSection />
