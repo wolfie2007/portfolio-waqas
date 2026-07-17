@@ -195,7 +195,7 @@ function Char({
 
 function HeroSection() {
   return (
-    <section className="h-screen flex flex-col relative" style={{ overflowX: "clip" }}>
+    <section className="h-screen flex flex-col relative" style={{ overflowX: "clip", background: "#06B6D4" }}>
       <FadeIn delay={0} y={-20}>
         <nav className="flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8">
           {["About", "Skills", "Projects", "Contact"].map((l) => (
