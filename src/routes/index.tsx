@@ -203,12 +203,13 @@ function HeroSection() {
               key={l}
               href={`#${l.toLowerCase()}`}
               className="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] transition-opacity duration-200 hover:opacity-70"
-              style={{ color: "#D7E2EA" }}
+              style={{ color: "#0B1B4A" }}
             >
               {l}
             </a>
           ))}
         </nav>
+
       </FadeIn>
 
       <div className="mt-6 sm:mt-4 md:-mt-5 px-6 md:px-10">
