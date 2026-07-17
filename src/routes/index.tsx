@@ -195,7 +195,7 @@ function Char({
 
 function HeroSection() {
   return (
-    <section className="h-screen flex flex-col relative" style={{ overflowX: "clip" }}>
+    <section className="h-screen flex flex-col relative" style={{ overflowX: "clip", background: "#06B6D4" }}>
       <FadeIn delay={0} y={-20}>
         <nav className="flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8">
           {["About", "Skills", "Projects", "Contact"].map((l) => (
@@ -203,12 +203,13 @@ function HeroSection() {
               key={l}
               href={`#${l.toLowerCase()}`}
               className="font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] transition-opacity duration-200 hover:opacity-70"
-              style={{ color: "#D7E2EA" }}
+              style={{ color: "#0B1B4A" }}
             >
               {l}
             </a>
           ))}
         </nav>
+
       </FadeIn>
 
       <div className="mt-6 sm:mt-4 md:-mt-5 px-6 md:px-10">
@@ -223,10 +224,11 @@ function HeroSection() {
         <FadeIn delay={0.35} y={20}>
           <p
             className="font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[260px]"
-            style={{ color: "#D7E2EA", fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)" }}
+            style={{ color: "#0B1B4A", fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)" }}
           >
             a full-stack developer building real-time, production-ready web apps
           </p>
+
         </FadeIn>
         <FadeIn delay={0.5} y={20}>
           <ContactButton />
@@ -520,8 +522,8 @@ function MarqueeSection() {
   return (
     <section
       className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3 marquee-section"
-      style={{ background: "#0C0C0C" }}
     >
+
       <MarqueeRow skills={SKILLS.slice(0, half)} reverse={false} startIndex={0} />
       <MarqueeRow skills={SKILLS.slice(half)} reverse={true} startIndex={half} />
     </section>
@@ -656,42 +658,41 @@ const PROJECTS: Project[] = [
 ];
 
 function ProjectCard({ p, i, total, progress }: { p: Project; i: number; total: number; progress: ReturnType<typeof useScroll>["scrollYProgress"] }) {
-  const targetScale = 1 - (total - 1 - i) * 0.03;
+  const targetScale = 1 - (total - 1 - i) * 0.04;
   const range = [i / total, 1];
   const scale = useTransform(progress, range, [1, targetScale]);
   return (
-    <div className="sticky top-24 md:top-32" style={{ top: `${i * 28 + 96}px` }}>
-      <motion.div
-        style={{ scale }}
-        className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6"
-      >
-        <div className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px]" style={{ background: "#0C0C0C" }}>
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 px-2 sm:px-4 pb-4 sm:pb-6">
-            <div className="font-black" style={{ color: "#D7E2EA", fontSize: "clamp(3rem, 10vw, 140px)", lineHeight: 1 }}>
-              {p.n}
-            </div>
-            <div className="flex flex-col min-w-0 flex-1">
-              <div className="uppercase tracking-widest text-xs sm:text-sm" style={{ color: "#D7E2EA", opacity: 0.6 }}>
-                {p.category}
-              </div>
-              <div className="font-medium uppercase truncate" style={{ color: "#D7E2EA", fontSize: "clamp(1rem, 2.2vw, 2rem)" }}>
-                {p.name}
-              </div>
-            </div>
-            <LiveProjectButton href={p.href} label={p.linkLabel} />
+    <motion.div
+      style={{ scale }}
+      className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6 w-full"
+    >
+      <div className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px]" style={{ background: "#0C0C0C" }}>
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6 px-2 sm:px-4 pb-4 sm:pb-6">
+          <div className="font-black" style={{ color: "#D7E2EA", fontSize: "clamp(3rem, 10vw, 140px)", lineHeight: 1 }}>
+            {p.n}
           </div>
-          <div className="grid grid-cols-[2fr_3fr] gap-3 sm:gap-4">
-            <div className="flex flex-col gap-3 sm:gap-4">
-              <img src={p.col1a} alt="" className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] w-full object-cover" style={{ height: "clamp(130px, 16vw, 230px)" }} />
-              <img src={p.col1b} alt="" className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] w-full object-cover" style={{ height: "clamp(160px, 22vw, 340px)" }} />
+          <div className="flex flex-col min-w-0 flex-1">
+            <div className="uppercase tracking-widest text-xs sm:text-sm" style={{ color: "#D7E2EA", opacity: 0.6 }}>
+              {p.category}
             </div>
-            <img src={p.col2} alt="" className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] w-full h-full object-cover" />
+            <div className="font-medium uppercase truncate" style={{ color: "#D7E2EA", fontSize: "clamp(1rem, 2.2vw, 2rem)" }}>
+              {p.name}
+            </div>
           </div>
+          <LiveProjectButton href={p.href} label={p.linkLabel} />
         </div>
-      </motion.div>
-    </div>
+        <div className="grid grid-cols-[2fr_3fr] gap-3 sm:gap-4">
+          <div className="flex flex-col gap-3 sm:gap-4">
+            <img src={p.col1a} alt="" className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] w-full object-cover" style={{ height: "clamp(130px, 16vw, 230px)" }} />
+            <img src={p.col1b} alt="" className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] w-full object-cover" style={{ height: "clamp(160px, 22vw, 340px)" }} />
+          </div>
+          <img src={p.col2} alt="" className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] w-full h-full object-cover" />
+        </div>
+      </div>
+    </motion.div>
   );
 }
+
 
 function ProjectsSection() {
   const ref = useRef<HTMLElement>(null);
@@ -701,7 +702,6 @@ function ProjectsSection() {
       id="projects"
       ref={ref}
       className="rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-10 px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
-      style={{ background: "#0C0C0C" }}
     >
       <h2
         className="hero-heading font-black uppercase text-center leading-none tracking-tight mb-16 sm:mb-20 md:mb-28"
@@ -709,13 +709,18 @@ function ProjectsSection() {
       >
         Project
       </h2>
-      <div>
+      <div className="relative">
         {PROJECTS.map((p, i) => (
-          <div key={p.n} className="h-[85vh]">
+          <div
+            key={p.n}
+            className="sticky flex items-start justify-center px-2 h-[90vh]"
+            style={{ top: `${i * 36 + 80}px` }}
+          >
             <ProjectCard p={p} i={i} total={PROJECTS.length} progress={scrollYProgress} />
           </div>
         ))}
       </div>
+
     </section>
   );
 }
@@ -724,7 +729,7 @@ function ProjectsSection() {
 
 function Index() {
   return (
-    <main style={{ background: "#0C0C0C", overflowX: "clip", fontFamily: "'Kanit', sans-serif" }}>
+    <main style={{ overflowX: "clip", fontFamily: "'Kanit', sans-serif" }}>
       <HeroSection />
       <MarqueeSection />
       <AboutSection />
@@ -733,3 +738,4 @@ function Index() {
     </main>
   );
 }
+
