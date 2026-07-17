@@ -13,14 +13,24 @@
 :root {
   --background: #0C0C0C;
   --foreground: #D7E2EA;
+  --vibrant-light: #06B6D4;
+  --vibrant-dark: #3B1578;
 }
 
 html, body, #root {
-  background-color: #0C0C0C;
   color: #D7E2EA;
   font-family: 'Kanit', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: var(--vibrant-dark);
+  background-image: linear-gradient(90deg, var(--vibrant-light) 0 50%, var(--vibrant-dark) 50% 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  min-height: 100vh;
 }
 
 *, *::before, *::after {
@@ -28,12 +38,13 @@ html, body, #root {
 }
 
 .hero-heading {
-  background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #E0E7FF 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
+
 
 /* Resume peek button */
 .resume-wrap {
