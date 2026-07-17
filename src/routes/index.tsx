@@ -530,10 +530,10 @@ function MarqueeSection() {
   const half = Math.ceil(SKILLS.length / 2);
   return (
     <section
-      className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3 marquee-section"
+      className="pt-10 sm:pt-14 md:pt-16 pb-10 overflow-hidden flex flex-col gap-3 marquee-section"
     >
       <h2
-        className="hero-heading font-black uppercase text-center leading-none tracking-tight mb-16 sm:mb-20 md:mb-28"
+        className="hero-heading font-black uppercase text-center leading-none tracking-tight mb-10 sm:mb-14 md:mb-16"
         style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
       >
         Tech Stack
