@@ -520,8 +520,8 @@ function MarqueeSection() {
   return (
     <section
       className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3 marquee-section"
-      style={{ background: "#0C0C0C" }}
     >
+
       <MarqueeRow skills={SKILLS.slice(0, half)} reverse={false} startIndex={0} />
       <MarqueeRow skills={SKILLS.slice(half)} reverse={true} startIndex={half} />
     </section>
