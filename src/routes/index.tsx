@@ -711,14 +711,14 @@ function ProjectsSection() {
         {PROJECTS.map((p, i) => (
           <div
             key={p.n}
-            className="sticky flex items-start justify-center px-2"
-            style={{ top: `${i * 36 + 80}px`, marginBottom: "18vh" }}
+            className="sticky flex items-start justify-center px-2 h-[90vh]"
+            style={{ top: `${i * 36 + 80}px` }}
           >
             <ProjectCard p={p} i={i} total={PROJECTS.length} progress={scrollYProgress} />
           </div>
         ))}
-        <div className="h-[60vh]" />
       </div>
+
     </section>
   );
 }
