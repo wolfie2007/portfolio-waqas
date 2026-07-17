@@ -700,7 +700,6 @@ function ProjectsSection() {
       id="projects"
       ref={ref}
       className="rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-10 px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
-      style={{ background: "#0C0C0C" }}
     >
       <h2
         className="hero-heading font-black uppercase text-center leading-none tracking-tight mb-16 sm:mb-20 md:mb-28"
@@ -708,12 +707,17 @@ function ProjectsSection() {
       >
         Project
       </h2>
-      <div>
+      <div className="relative">
         {PROJECTS.map((p, i) => (
-          <div key={p.n} className="h-[85vh]">
+          <div
+            key={p.n}
+            className="sticky flex items-start justify-center px-2"
+            style={{ top: `${i * 36 + 80}px`, marginBottom: "18vh" }}
+          >
             <ProjectCard p={p} i={i} total={PROJECTS.length} progress={scrollYProgress} />
           </div>
         ))}
+        <div className="h-[60vh]" />
       </div>
     </section>
   );
@@ -723,7 +727,7 @@ function ProjectsSection() {
 
 function Index() {
   return (
-    <main style={{ background: "#0C0C0C", overflowX: "clip", fontFamily: "'Kanit', sans-serif" }}>
+    <main style={{ overflowX: "clip", fontFamily: "'Kanit', sans-serif" }}>
       <HeroSection />
       <MarqueeSection />
       <AboutSection />
@@ -732,3 +736,4 @@ function Index() {
     </main>
   );
 }
+
