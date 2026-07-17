@@ -224,10 +224,11 @@ function HeroSection() {
         <FadeIn delay={0.35} y={20}>
           <p
             className="font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[260px]"
-            style={{ color: "#D7E2EA", fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)" }}
+            style={{ color: "#0B1B4A", fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)" }}
           >
             a full-stack developer building real-time, production-ready web apps
           </p>
+
         </FadeIn>
         <FadeIn delay={0.5} y={20}>
           <ContactButton />
