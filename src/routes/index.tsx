@@ -656,42 +656,41 @@ const PROJECTS: Project[] = [
 ];
 
 function ProjectCard({ p, i, total, progress }: { p: Project; i: number; total: number; progress: ReturnType<typeof useScroll>["scrollYProgress"] }) {
-  const targetScale = 1 - (total - 1 - i) * 0.03;
+  const targetScale = 1 - (total - 1 - i) * 0.04;
   const range = [i / total, 1];
   const scale = useTransform(progress, range, [1, targetScale]);
   return (
-    <div className="sticky top-24 md:top-32" style={{ top: `${i * 28 + 96}px` }}>
-      <motion.div
-        style={{ scale }}
-        className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6"
-      >
-        <div className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px]" style={{ background: "#0C0C0C" }}>
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 px-2 sm:px-4 pb-4 sm:pb-6">
-            <div className="font-black" style={{ color: "#D7E2EA", fontSize: "clamp(3rem, 10vw, 140px)", lineHeight: 1 }}>
-              {p.n}
-            </div>
-            <div className="flex flex-col min-w-0 flex-1">
-              <div className="uppercase tracking-widest text-xs sm:text-sm" style={{ color: "#D7E2EA", opacity: 0.6 }}>
-                {p.category}
-              </div>
-              <div className="font-medium uppercase truncate" style={{ color: "#D7E2EA", fontSize: "clamp(1rem, 2.2vw, 2rem)" }}>
-                {p.name}
-              </div>
-            </div>
-            <LiveProjectButton href={p.href} label={p.linkLabel} />
+    <motion.div
+      style={{ scale }}
+      className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6 w-full"
+    >
+      <div className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px]" style={{ background: "#0C0C0C" }}>
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6 px-2 sm:px-4 pb-4 sm:pb-6">
+          <div className="font-black" style={{ color: "#D7E2EA", fontSize: "clamp(3rem, 10vw, 140px)", lineHeight: 1 }}>
+            {p.n}
           </div>
-          <div className="grid grid-cols-[2fr_3fr] gap-3 sm:gap-4">
-            <div className="flex flex-col gap-3 sm:gap-4">
-              <img src={p.col1a} alt="" className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] w-full object-cover" style={{ height: "clamp(130px, 16vw, 230px)" }} />
-              <img src={p.col1b} alt="" className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] w-full object-cover" style={{ height: "clamp(160px, 22vw, 340px)" }} />
+          <div className="flex flex-col min-w-0 flex-1">
+            <div className="uppercase tracking-widest text-xs sm:text-sm" style={{ color: "#D7E2EA", opacity: 0.6 }}>
+              {p.category}
             </div>
-            <img src={p.col2} alt="" className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] w-full h-full object-cover" />
+            <div className="font-medium uppercase truncate" style={{ color: "#D7E2EA", fontSize: "clamp(1rem, 2.2vw, 2rem)" }}>
+              {p.name}
+            </div>
           </div>
+          <LiveProjectButton href={p.href} label={p.linkLabel} />
         </div>
-      </motion.div>
-    </div>
+        <div className="grid grid-cols-[2fr_3fr] gap-3 sm:gap-4">
+          <div className="flex flex-col gap-3 sm:gap-4">
+            <img src={p.col1a} alt="" className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] w-full object-cover" style={{ height: "clamp(130px, 16vw, 230px)" }} />
+            <img src={p.col1b} alt="" className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] w-full object-cover" style={{ height: "clamp(160px, 22vw, 340px)" }} />
+          </div>
+          <img src={p.col2} alt="" className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] w-full h-full object-cover" />
+        </div>
+      </div>
+    </motion.div>
   );
 }
+
 
 function ProjectsSection() {
   const ref = useRef<HTMLElement>(null);
