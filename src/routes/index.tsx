@@ -226,7 +226,7 @@ function HeroSection() {
             className="font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[260px]"
             style={{ color: "#0B1B4A", fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)" }}
           >
-            a full-stack developer building real-time, production-ready web apps
+            a full-stack engineer, building AI-powered SaaS products
           </p>
 
         </FadeIn>
@@ -261,27 +261,27 @@ const SKILLS: Skill[] = [
   { name: "TypeScript", sub: "Type-safe application code", slug: "typescript", color: "#3178C6", bullets: [
     "Wrote CodeDuel end-to-end in TS — shared types between client & server",
     "Modeled Encrypto's cipher configs as discriminated unions for safe UI switching",
-    "Strict mode across every project to catch bugs at compile time",
+    "Typed SiteMindAI's shared DTOs across the monorepo's apps and services",
   ]},
   { name: "React", sub: "Reusable interface systems", slug: "react", color: "#61DAFB", bullets: [
     "Built CodeDuel's realtime battle arena and live scoreboard UI",
     "Composed MediTrack's dashboard from small, reusable hook-driven components",
-    "Managed cipher input/output state in Encrypto with controlled components",
+    "Built SiteMindAI's dashboard and widget-preview UI",
   ]},
   { name: "Next.js", sub: "Full-stack product engineering", slug: "nextdotjs", color: "#FFFFFF", bullets: [
     "Shipped CodeDuel with SSR pages and API routes in one codebase",
-    "Used server actions for MediTrack record mutations",
     "Deployed image-optimized landing pages on the edge",
+    "Builds SiteMindAI's dashboard, landing page and auth flows",
   ]},
   { name: "Node.js", sub: "Server-side JavaScript runtime", slug: "nodedotjs", color: "#5FA04E", bullets: [
     "Powered CodeDuel's matchmaking and code-execution backend",
     "Built MediTrack's REST API for patient & prescription records",
-    "Wrote CLI scripts to seed test data across projects",
+    "Runs SiteMindAI's Express API, crawler and AI services",
   ]},
   { name: "Express", sub: "REST API foundations", slug: "express", color: "#FFFFFF", bullets: [
     "Structured MediTrack's routes, middleware and auth guards",
     "Exposed CodeDuel's duel lifecycle endpoints (create / join / submit)",
-    "Wrote reusable error-handling and validation middleware",
+    "Built SiteMindAI's REST API for crawl jobs, chat and auth",
   ]},
   { name: "Socket.IO", sub: "Real-time communication", slug: "socketdotio", color: "#FFFFFF", bullets: [
     "Ran CodeDuel's live duels — code sync, timers and results in real time",
@@ -296,12 +296,12 @@ const SKILLS: Skill[] = [
   { name: "Tailwind CSS", sub: "Scalable design system", slug: "tailwindcss", color: "#06B6D4", bullets: [
     "Styled this portfolio and MediTrack entirely with utility classes",
     "Built a shared token setup for consistent spacing & color",
-    "Rapidly prototyped responsive layouts without leaving JSX",
+    "Styled SiteMindAI's dashboard and marketing site with shadcn/ui",
   ]},
   { name: "Framer Motion", sub: "Motion & micro-interactions", slug: "framer", color: "#0055FF", bullets: [
     "Choreographed the hero, marquee and card animations on this site",
     "Added page transitions and hover micro-interactions to CodeDuel",
-    "Used layout animations for smooth list reordering",
+    "Animated SiteMindAI's dashboard transitions and widget preview",
   ]},
   { name: "React Native", sub: "Cross-platform mobile apps", slug: "react", color: "#61DAFB", bullets: [
     "Prototyped a mobile companion for MediTrack (iOS + Android)",
@@ -347,6 +347,31 @@ const SKILLS: Skill[] = [
     "Backed MediTrack's desktop version with a local SQLite DB",
     "Designed normalized tables for patients, visits and meds",
     "Wrote parameterized queries to keep inputs safe",
+  ]},
+  { name: "PostgreSQL", sub: "Relational data & pgvector search", slug: "postgresql", color: "#4169E1", bullets: [
+    "Stores SiteMindAI's crawled knowledge chunks with pgvector for similarity search",
+    "Backs multi-tenant business, user and subscription data",
+    "Used Prisma migrations to keep schema changes reviewable",
+  ]},
+  { name: "Prisma", sub: "Type-safe database access", slug: "prisma", color: "#2D3748", bullets: [
+    "Modeled SiteMindAI's schema across businesses, sites and knowledge chunks",
+    "Generated fully typed queries shared across the API",
+    "Kept migrations deterministic across dev and production",
+  ]},
+  { name: "Redis", sub: "Queues & caching", slug: "redis", color: "#FF4438", bullets: [
+    "Backs BullMQ job queues for SiteMindAI's website crawl workers",
+    "Caches hot lookups to keep the assistant's responses fast",
+    "Decouples long-running crawl jobs from the request/response cycle",
+  ]},
+  { name: "Gemini API", sub: "LLM chat & embeddings", slug: "googlegemini", color: "#8E75B2", bullets: [
+    "Powers SiteMindAI's RAG pipeline — chat completions grounded in retrieved chunks",
+    "Generates embeddings for crawled site content during ingestion",
+    "Wrapped behind a provider abstraction so models can be swapped without touching callers",
+  ]},
+  { name: "Playwright", sub: "Automated site crawling", slug: "playwright", color: "#2EAD33", bullets: [
+    "Crawls JS-rendered websites for SiteMindAI's ingestion pipeline",
+    "Paired with Cheerio for fast static-HTML extraction where a full browser isn't needed",
+    "Handles pagination and dynamic content that simple HTTP fetches would miss",
   ]},
 ];
 
@@ -562,7 +587,7 @@ function AboutSection() {
             About me
           </h2>
         </FadeIn>
-        <AnimatedText text="I'm a Computer Science student at Air University with hands-on experience building full-stack and real-time web apps using modern JavaScript. I've shipped production projects with real-time communication, API integrations, and scalable backends — and I love working with teams that want to build things that actually get used." />
+        <AnimatedText text="<AnimatedText text="I'm a Computer Science student and founder of SiteMindAI, a RAG-powered SaaS that turns any website into a grounded AI assistant. I build full-stack products with modern JavaScript, real-time systems, scalable backends and AI integrations, turning ideas into production-ready software, and I love working with teams that want to build things that actually get used." />
       </div>
       <div className="mt-16 sm:mt-20 md:mt-24 relative z-10">
         <ResumeButton />
