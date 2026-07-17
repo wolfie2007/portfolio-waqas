@@ -530,15 +530,8 @@ function MarqueeSection() {
   const half = Math.ceil(SKILLS.length / 2);
   return (
     <section
-      className="pt-10 sm:pt-14 md:pt-16 pb-10 overflow-hidden flex flex-col gap-3 marquee-section"
+      className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3 marquee-section"
     >
-      <h2
-        className="hero-heading font-black uppercase text-center leading-none tracking-tight mb-10 sm:mb-14 md:mb-16"
-        style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
-      >
-        Tech Stack
-      </h2>
-
       <MarqueeRow skills={SKILLS.slice(0, half)} reverse={false} startIndex={0} />
       <MarqueeRow skills={SKILLS.slice(half)} reverse={true} startIndex={half} />
     </section>
@@ -746,7 +739,20 @@ function Index() {
   return (
     <main style={{ overflowX: "clip", fontFamily: "'Kanit', sans-serif" }}>
       <HeroSection />
-      <div className="hero-fade" aria-hidden="true" />
+      <div className="hero-fade">
+        <h2
+          className="hero-heading font-black uppercase text-center leading-none tracking-tight"
+          style={{
+            fontSize: "clamp(3rem, 12vw, 160px)",
+            position: "absolute",
+            bottom: "8%",
+            left: 0,
+            right: 0,
+          }}
+        >
+          Tech Stack
+        </h2>
+      </div>
       <MarqueeSection />
       <AboutSection />
       <ServicesSection />
