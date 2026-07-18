@@ -840,7 +840,7 @@ function Footer() {
             >
               [ Let&apos;s make something ]
             </div>
-            
+            <a
               href="mailto:waqasameer654@gmail.com"
               className="group inline-flex items-baseline gap-3 sm:gap-6 flex-wrap"
               style={{ color: "#F2E7F5" }}
