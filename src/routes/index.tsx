@@ -960,6 +960,12 @@ function Footer() {
             <div className="uppercase tracking-[0.28em] font-medium mb-4" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
               Elsewhere
             </div>
+            <div className="flex gap-4">
+              {socials.map((s) => (
+                <SocialIconButton key={s.label} href={s.href} label={s.label} brand={s.brand} icon={s.icon} iconSrc={s.iconSrc} />
+              ))}
+            </div>
+          </div>
             <ul className="flex flex-col gap-3">
               {socials.map((s) => (
                 <li key={s.label}>
