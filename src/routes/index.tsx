@@ -887,7 +887,7 @@ function Footer() {
             >
               [ Let&apos;s make something ]
             </div>
-            
+            <a
               href="mailto:waqasameer654@gmail.com"
               className="group inline-flex items-baseline gap-3 sm:gap-6 flex-wrap"
               style={{ color: "#F2E7F5" }}
@@ -974,7 +974,7 @@ function Footer() {
             <ul className="flex flex-col gap-3">
               {nav.map((n) => (
                 <li key={n.label}>
-                  
+                  <a
                     href={n.href}
                     className="font-medium hover:underline decoration-[#B600A8] underline-offset-4"
                     style={{ color: "#F2E7F5", fontSize: 15 }}
