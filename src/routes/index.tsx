@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode, type ElementType } from "react";
 import { motion, useScroll, useTransform, type MotionProps } from "framer-motion";
 import { ArrowUpRight, Hand, Github, Linkedin, Mail, MapPin, ArrowUp } from "lucide-react";
+import { ArrowUpRight, Hand, Instagram } from "lucide-react";
 
 
 export const Route = createFileRoute("/")({
@@ -794,14 +795,61 @@ function useLahoreTime() {
   return time;
 }
 
+function SocialIconButton({
+  href,
+  label,
+  brand,
+  icon: Icon,
+  iconSrc,
+}: {
+  href: string;
+  label: string;
+  brand: string;
+  icon?: ElementType;
+  iconSrc?: string;
+}) {
+  const [hover, setHover] = useState(false);
+  return (
+    
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={label}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      className="flex items-center justify-center rounded-2xl transition-all duration-300"
+      style={{
+        width: 64,
+        height: 64,
+        border: `1px solid ${hover ? brand : "rgba(215,226,234,0.18)"}`,
+        background: hover ? `${brand}1A` : "rgba(255,255,255,0.02)",
+        color: hover ? brand : "#D7E2EA",
+        transform: hover ? "translateY(-3px)" : "translateY(0)",
+      }}
+    >
+      {iconSrc ? (
+        <img
+          src={iconSrc}
+          alt=""
+          style={{ width: 28, height: 28, filter: hover ? "none" : "grayscale(1) opacity(0.75)" }}
+        />
+      ) : Icon ? (
+        <Icon size={28} strokeWidth={1.6} />
+      ) : null}
+    </a>
+  );
+}
+
 function Footer() {
   const time = useLahoreTime();
   const year = new Date().getFullYear();
 
   const socials = [
-    { label: "GitHub", href: "https://github.com/wolfie2007", icon: Github },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/waqas-ameer/", icon: Linkedin },
-    { label: "Email", href: "mailto:waqasameer654@gmail.com", icon: Mail },
+    { label: "GitHub", href: "https://github.com/wolfie2007", icon: Github, brand: "#8957e5" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/waqas-ameer-024258374", icon: Linkedin, brand: "#0A66C2" },
+    { label: "Email", href: "mailto:waqasameer654@gmail.com", icon: Mail, brand: "#EA4335" },
+    { label: "Instagram", href: "https://instagram.com/waqas_2007", icon: Instagram, brand: "#E1306C" },
+    { label: "WhatsApp", href: "https://wa.me/923409192329", iconSrc: "https://cdn.simpleicons.org/whatsapp/ffffff", brand: "#25D366" },
   ];
 
   const nav = [
