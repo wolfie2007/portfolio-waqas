@@ -575,195 +575,30 @@ function MarqueeSection() {
 /* ---------- About ---------- */
 
 function AboutSection() {
-  const facts = [
-    { k: "Location", v: "Lahore, PK" },
-    { k: "Role", v: "Full-Stack Engineer" },
-    { k: "Focus", v: "AI-powered SaaS" },
-    { k: "Status", v: "Open to work" },
-  ];
-
-  const now = [
-    {
-      tag: "Building",
-      title: "SiteMindAI",
-      body: "RAG-powered assistant that turns any site into a grounded AI chat. Crawler, embeddings, multi-tenant dashboard — the whole stack.",
-      accent: "#F5C518",
-    },
-    {
-      tag: "Learning",
-      title: "Distributed systems",
-      body: "Queues, workers, vector search at scale. Making SiteMindAI's crawler survive real traffic instead of just my localhost.",
-      accent: "#06B6D4",
-    },
-    {
-      tag: "Listening",
-      title: "Lo-fi + Nujabes",
-      body: "Coding fuel. Bonus points for anything with a jazz sample and a broken drum machine.",
-      accent: "#B600A8",
-    },
-  ];
-
   return (
-    <section
-      id="about"
-      className="relative px-5 sm:px-8 md:px-12 lg:px-16 py-24 sm:py-32 md:py-40 overflow-hidden"
-    >
-      {/* editorial marker */}
-      <div className="max-w-[1400px] mx-auto flex items-center gap-3 mb-10 sm:mb-14">
-        <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: "#F5C518" }} />
-        <span className="uppercase tracking-[0.32em] font-medium" style={{ color: "#D7E2EA", opacity: 0.7, fontSize: 12 }}>
-          Ch. 01 &middot; The person behind the commits
-        </span>
-      </div>
+    <section id="about" className="min-h-screen relative flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden">
+      <FadeIn delay={0.1} x={-80} y={0} duration={0.9} className="absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] w-[120px] sm:w-[160px] md:w-[210px]">
+        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" alt="" className="w-full" />
+      </FadeIn>
+      <FadeIn delay={0.25} x={-80} y={0} duration={0.9} className="absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] w-[100px] sm:w-[140px] md:w-[180px]">
+        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png" alt="" className="w-full" />
+      </FadeIn>
+      <FadeIn delay={0.15} x={80} y={0} duration={0.9} className="absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] w-[120px] sm:w-[160px] md:w-[210px]">
+        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png" alt="" className="w-full" />
+      </FadeIn>
+      <FadeIn delay={0.3} x={80} y={0} duration={0.9} className="absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] w-[130px] sm:w-[170px] md:w-[220px]">
+        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png" alt="" className="w-full" />
+      </FadeIn>
 
-      {/* split headline / paragraph */}
-      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-end">
-        <FadeIn y={40}>
-          <h2
-            className="font-black uppercase leading-[0.85] tracking-tight"
-            style={{ fontSize: "clamp(3.5rem, 13vw, 12.5rem)", color: "#F2E7F5" }}
-          >
-            About
-            <br />
-            <span
-              className="italic font-light"
-              style={{
-                fontFamily: "'Instrument Serif', 'Cormorant Garamond', serif",
-                background: "linear-gradient(93deg, #F5C518 0%, #B600A8 55%, #06B6D4 100%)",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                color: "transparent",
-                letterSpacing: "-0.03em",
-              }}
-            >
-              me&mdash;really.
-            </span>
+      <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16 relative z-10">
+        <FadeIn delay={0} y={40}>
+          <h2 className="hero-heading font-black uppercase leading-none tracking-tight text-center" style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}>
+            About me
           </h2>
         </FadeIn>
-
-        <FadeIn y={40} delay={0.1}>
-          <div className="flex flex-col gap-6">
-            <p
-              className="font-light leading-relaxed"
-              style={{ color: "#D7E2EA", fontSize: "clamp(1rem, 1.35vw, 1.25rem)" }}
-            >
-              I&apos;m <span style={{ color: "#F5C518", fontWeight: 500 }}>Waqas Ameer</span> &mdash;
-              a Computer Science student, founder of{" "}
-              <span style={{ color: "#06B6D4", fontWeight: 500 }}>SiteMindAI</span>, and a full-stack
-              engineer who genuinely likes shipping things. I build with modern JavaScript, realtime
-              systems, and LLMs, turning half-formed ideas into products people actually use.
-            </p>
-            <p
-              className="font-light leading-relaxed"
-              style={{ color: "#D7E2EA", opacity: 0.75, fontSize: "clamp(0.95rem, 1.15vw, 1.1rem)" }}
-            >
-              Off the keyboard: chess, long walks debugging problems in my head, and an unhealthy
-              obsession with clean commit history.
-            </p>
-
-            {/* signature */}
-            <div className="flex items-center gap-4 pt-2">
-              <div
-                className="italic"
-                style={{
-                  fontFamily: "'Instrument Serif', serif",
-                  fontSize: "2.2rem",
-                  color: "#F5C518",
-                  lineHeight: 1,
-                  transform: "rotate(-4deg)",
-                }}
-              >
-                — Waqas
-              </div>
-              <div className="h-px flex-1" style={{ background: "linear-gradient(90deg, #F5C518, transparent)" }} />
-            </div>
-          </div>
-        </FadeIn>
+        <AnimatedText text="I'm a Computer Science student and founder of SiteMindAI, a RAG-powered SaaS that turns any website into a grounded AI assistant. I build full-stack products with modern JavaScript, real-time systems, scalable backends and AI integrations, turning ideas into production-ready software, and I love working with teams that want to build things that actually get used." />
       </div>
-
-      {/* fact strip */}
-      <div className="max-w-[1400px] mx-auto mt-20 sm:mt-28">
-        <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-px overflow-hidden rounded-2xl"
-          style={{ background: "rgba(215,226,234,0.14)", border: "1px solid rgba(215,226,234,0.14)" }}
-        >
-          {facts.map((f) => (
-            <div key={f.k} className="p-5 sm:p-7" style={{ background: "#12081F" }}>
-              <div className="uppercase tracking-[0.24em] font-light" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
-                {f.k}
-              </div>
-              <div className="mt-2 font-medium" style={{ color: "#F2E7F5", fontSize: "clamp(1.05rem, 1.6vw, 1.35rem)" }}>
-                {f.v}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* NOW section */}
-      <div className="max-w-[1400px] mx-auto mt-20 sm:mt-28">
-        <div className="flex items-baseline justify-between mb-8 sm:mb-10 flex-wrap gap-2">
-          <div className="flex items-center gap-3">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="absolute inline-flex h-full w-full rounded-full opacity-60 animate-ping" style={{ background: "#22c55e" }} />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: "#22c55e" }} />
-            </span>
-            <h3 className="uppercase tracking-[0.28em] font-medium" style={{ color: "#F2E7F5", fontSize: 14 }}>
-              What I&apos;m on right now
-            </h3>
-          </div>
-          <div className="uppercase tracking-[0.28em] font-light" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
-            Updated weekly
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-          {now.map((n, i) => (
-            <FadeIn key={n.tag} y={30} delay={i * 0.08}>
-              <div
-                className="relative rounded-2xl p-6 sm:p-7 h-full flex flex-col gap-3 group overflow-hidden transition-transform duration-300 hover:-translate-y-1"
-                style={{
-                  background: "linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
-                  border: "1px solid rgba(215,226,234,0.12)",
-                }}
-              >
-                <div
-                  className="absolute -top-16 -right-16 w-40 h-40 rounded-full opacity-40 blur-2xl transition-opacity duration-500 group-hover:opacity-70"
-                  style={{ background: n.accent }}
-                />
-                <div className="flex items-center justify-between relative z-10">
-                  <span
-                    className="uppercase tracking-[0.24em] font-medium px-2.5 py-1 rounded-full"
-                    style={{ fontSize: 10, color: n.accent, border: `1px solid ${n.accent}66`, background: `${n.accent}12` }}
-                  >
-                    {n.tag}
-                  </span>
-                  <span className="opacity-40 group-hover:opacity-100 transition-opacity" style={{ color: "#D7E2EA" }}>
-                    <ArrowUpRight size={18} />
-                  </span>
-                </div>
-                <div className="font-medium relative z-10" style={{ color: "#F2E7F5", fontSize: "1.5rem", lineHeight: 1.15 }}>
-                  {n.title}
-                </div>
-                <p className="font-light leading-relaxed relative z-10" style={{ color: "#D7E2EA", opacity: 0.75, fontSize: 14 }}>
-                  {n.body}
-                </p>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-      </div>
-
-      {/* resume CTA */}
-      <div className="max-w-[1400px] mx-auto mt-20 sm:mt-24 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 flex-wrap">
-        <div>
-          <div className="uppercase tracking-[0.28em] font-light" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
-            Prefer the paper trail?
-          </div>
-          <div className="font-medium mt-1" style={{ color: "#F2E7F5", fontSize: "clamp(1.4rem, 2.4vw, 2rem)" }}>
-            Grab the full resume.
-          </div>
-        </div>
+      <div className="mt-16 sm:mt-20 md:mt-24 relative z-10">
         <ResumeButton />
       </div>
     </section>
