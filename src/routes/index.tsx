@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode, type ElementType } from "react";
 import { motion, useScroll, useTransform, type MotionProps } from "framer-motion";
-import { ArrowUpRight, Hand } from "lucide-react";
+import { ArrowUpRight, Hand, Github, Linkedin, Mail, MapPin, ArrowUp } from "lucide-react";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -574,35 +575,201 @@ function MarqueeSection() {
 /* ---------- About ---------- */
 
 function AboutSection() {
-  return (
-    <section id="about" className="min-h-screen relative flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden">
-      <FadeIn delay={0.1} x={-80} y={0} duration={0.9} className="absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] w-[120px] sm:w-[160px] md:w-[210px]">
-        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" alt="" className="w-full" />
-      </FadeIn>
-      <FadeIn delay={0.25} x={-80} y={0} duration={0.9} className="absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] w-[100px] sm:w-[140px] md:w-[180px]">
-        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png" alt="" className="w-full" />
-      </FadeIn>
-      <FadeIn delay={0.15} x={80} y={0} duration={0.9} className="absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] w-[120px] sm:w-[160px] md:w-[210px]">
-        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png" alt="" className="w-full" />
-      </FadeIn>
-      <FadeIn delay={0.3} x={80} y={0} duration={0.9} className="absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] w-[130px] sm:w-[170px] md:w-[220px]">
-        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png" alt="" className="w-full" />
-      </FadeIn>
+  const facts = [
+    { k: "Location", v: "Lahore, PK" },
+    { k: "Role", v: "Full-Stack Engineer" },
+    { k: "Focus", v: "AI-powered SaaS" },
+    { k: "Status", v: "Open to work" },
+  ];
 
-      <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16 relative z-10">
-        <FadeIn delay={0} y={40}>
-          <h2 className="hero-heading font-black uppercase leading-none tracking-tight text-center" style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}>
-            About me
+  const now = [
+    {
+      tag: "Building",
+      title: "SiteMindAI",
+      body: "RAG-powered assistant that turns any site into a grounded AI chat. Crawler, embeddings, multi-tenant dashboard — the whole stack.",
+      accent: "#F5C518",
+    },
+    {
+      tag: "Learning",
+      title: "Distributed systems",
+      body: "Queues, workers, vector search at scale. Making SiteMindAI's crawler survive real traffic instead of just my localhost.",
+      accent: "#06B6D4",
+    },
+    {
+      tag: "Listening",
+      title: "Lo-fi + Nujabes",
+      body: "Coding fuel. Bonus points for anything with a jazz sample and a broken drum machine.",
+      accent: "#B600A8",
+    },
+  ];
+
+  return (
+    <section
+      id="about"
+      className="relative px-5 sm:px-8 md:px-12 lg:px-16 py-24 sm:py-32 md:py-40 overflow-hidden"
+    >
+      {/* editorial marker */}
+      <div className="max-w-[1400px] mx-auto flex items-center gap-3 mb-10 sm:mb-14">
+        <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: "#F5C518" }} />
+        <span className="uppercase tracking-[0.32em] font-medium" style={{ color: "#D7E2EA", opacity: 0.7, fontSize: 12 }}>
+          Ch. 01 &middot; The person behind the commits
+        </span>
+      </div>
+
+      {/* split headline / paragraph */}
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-end">
+        <FadeIn y={40}>
+          <h2
+            className="font-black uppercase leading-[0.85] tracking-tight"
+            style={{ fontSize: "clamp(3.5rem, 13vw, 12.5rem)", color: "#F2E7F5" }}
+          >
+            About
+            <br />
+            <span
+              className="italic font-light"
+              style={{
+                fontFamily: "'Instrument Serif', 'Cormorant Garamond', serif",
+                background: "linear-gradient(93deg, #F5C518 0%, #B600A8 55%, #06B6D4 100%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+                letterSpacing: "-0.03em",
+              }}
+            >
+              me&mdash;really.
+            </span>
           </h2>
         </FadeIn>
-        <AnimatedText text="I'm a Computer Science student and founder of SiteMindAI, a RAG-powered SaaS that turns any website into a grounded AI assistant. I build full-stack products with modern JavaScript, real-time systems, scalable backends and AI integrations, turning ideas into production-ready software, and I love working with teams that want to build things that actually get used." />
+
+        <FadeIn y={40} delay={0.1}>
+          <div className="flex flex-col gap-6">
+            <p
+              className="font-light leading-relaxed"
+              style={{ color: "#D7E2EA", fontSize: "clamp(1rem, 1.35vw, 1.25rem)" }}
+            >
+              I&apos;m <span style={{ color: "#F5C518", fontWeight: 500 }}>Waqas Ameer</span> &mdash;
+              a Computer Science student, founder of{" "}
+              <span style={{ color: "#06B6D4", fontWeight: 500 }}>SiteMindAI</span>, and a full-stack
+              engineer who genuinely likes shipping things. I build with modern JavaScript, realtime
+              systems, and LLMs, turning half-formed ideas into products people actually use.
+            </p>
+            <p
+              className="font-light leading-relaxed"
+              style={{ color: "#D7E2EA", opacity: 0.75, fontSize: "clamp(0.95rem, 1.15vw, 1.1rem)" }}
+            >
+              Off the keyboard: chess, long walks debugging problems in my head, and an unhealthy
+              obsession with clean commit history.
+            </p>
+
+            {/* signature */}
+            <div className="flex items-center gap-4 pt-2">
+              <div
+                className="italic"
+                style={{
+                  fontFamily: "'Instrument Serif', serif",
+                  fontSize: "2.2rem",
+                  color: "#F5C518",
+                  lineHeight: 1,
+                  transform: "rotate(-4deg)",
+                }}
+              >
+                — Waqas
+              </div>
+              <div className="h-px flex-1" style={{ background: "linear-gradient(90deg, #F5C518, transparent)" }} />
+            </div>
+          </div>
+        </FadeIn>
       </div>
-      <div className="mt-16 sm:mt-20 md:mt-24 relative z-10">
+
+      {/* fact strip */}
+      <div className="max-w-[1400px] mx-auto mt-20 sm:mt-28">
+        <div
+          className="grid grid-cols-2 md:grid-cols-4 gap-px overflow-hidden rounded-2xl"
+          style={{ background: "rgba(215,226,234,0.14)", border: "1px solid rgba(215,226,234,0.14)" }}
+        >
+          {facts.map((f) => (
+            <div key={f.k} className="p-5 sm:p-7" style={{ background: "#12081F" }}>
+              <div className="uppercase tracking-[0.24em] font-light" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
+                {f.k}
+              </div>
+              <div className="mt-2 font-medium" style={{ color: "#F2E7F5", fontSize: "clamp(1.05rem, 1.6vw, 1.35rem)" }}>
+                {f.v}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* NOW section */}
+      <div className="max-w-[1400px] mx-auto mt-20 sm:mt-28">
+        <div className="flex items-baseline justify-between mb-8 sm:mb-10 flex-wrap gap-2">
+          <div className="flex items-center gap-3">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full rounded-full opacity-60 animate-ping" style={{ background: "#22c55e" }} />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: "#22c55e" }} />
+            </span>
+            <h3 className="uppercase tracking-[0.28em] font-medium" style={{ color: "#F2E7F5", fontSize: 14 }}>
+              What I&apos;m on right now
+            </h3>
+          </div>
+          <div className="uppercase tracking-[0.28em] font-light" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
+            Updated weekly
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+          {now.map((n, i) => (
+            <FadeIn key={n.tag} y={30} delay={i * 0.08}>
+              <div
+                className="relative rounded-2xl p-6 sm:p-7 h-full flex flex-col gap-3 group overflow-hidden transition-transform duration-300 hover:-translate-y-1"
+                style={{
+                  background: "linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
+                  border: "1px solid rgba(215,226,234,0.12)",
+                }}
+              >
+                <div
+                  className="absolute -top-16 -right-16 w-40 h-40 rounded-full opacity-40 blur-2xl transition-opacity duration-500 group-hover:opacity-70"
+                  style={{ background: n.accent }}
+                />
+                <div className="flex items-center justify-between relative z-10">
+                  <span
+                    className="uppercase tracking-[0.24em] font-medium px-2.5 py-1 rounded-full"
+                    style={{ fontSize: 10, color: n.accent, border: `1px solid ${n.accent}66`, background: `${n.accent}12` }}
+                  >
+                    {n.tag}
+                  </span>
+                  <span className="opacity-40 group-hover:opacity-100 transition-opacity" style={{ color: "#D7E2EA" }}>
+                    <ArrowUpRight size={18} />
+                  </span>
+                </div>
+                <div className="font-medium relative z-10" style={{ color: "#F2E7F5", fontSize: "1.5rem", lineHeight: 1.15 }}>
+                  {n.title}
+                </div>
+                <p className="font-light leading-relaxed relative z-10" style={{ color: "#D7E2EA", opacity: 0.75, fontSize: 14 }}>
+                  {n.body}
+                </p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+
+      {/* resume CTA */}
+      <div className="max-w-[1400px] mx-auto mt-20 sm:mt-24 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 flex-wrap">
+        <div>
+          <div className="uppercase tracking-[0.28em] font-light" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
+            Prefer the paper trail?
+          </div>
+          <div className="font-medium mt-1" style={{ color: "#F2E7F5", fontSize: "clamp(1.4rem, 2.4vw, 2rem)" }}>
+            Grab the full resume.
+          </div>
+        </div>
         <ResumeButton />
       </div>
     </section>
   );
 }
+
 
 /* ---------- Services ---------- */
 
@@ -766,6 +933,254 @@ function ProjectsSection() {
   );
 }
 
+/* ---------- Footer ---------- */
+
+function useLahoreTime() {
+  const [time, setTime] = useState<string>("");
+  useEffect(() => {
+    const tick = () => {
+      try {
+        setTime(
+          new Intl.DateTimeFormat("en-GB", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+            timeZone: "Asia/Karachi",
+          }).format(new Date()),
+        );
+      } catch {
+        setTime("");
+      }
+    };
+    tick();
+    const id = setInterval(tick, 30_000);
+    return () => clearInterval(id);
+  }, []);
+  return time;
+}
+
+function Footer() {
+  const time = useLahoreTime();
+  const year = new Date().getFullYear();
+
+  const socials = [
+    { label: "GitHub", href: "https://github.com/wolfie2007", icon: Github },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/waqas-ameer/", icon: Linkedin },
+    { label: "Email", href: "mailto:waqasameer654@gmail.com", icon: Mail },
+  ];
+
+  const nav = [
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Projects", href: "#projects" },
+    { label: "Resume", href: "/Waqas_Ameer_Resume.pdf" },
+  ];
+
+  return (
+    <footer
+      className="relative overflow-hidden pt-20 sm:pt-28 md:pt-36 pb-8 px-5 sm:px-8 md:px-12 lg:px-16"
+      style={{
+        background:
+          "radial-gradient(120% 90% at 100% 0%, rgba(182,0,168,0.22) 0%, transparent 55%), radial-gradient(90% 80% at 0% 100%, rgba(6,182,212,0.18) 0%, transparent 55%), #0A0413",
+        borderTop: "1px solid rgba(215,226,234,0.1)",
+      }}
+    >
+      {/* asymmetric decorative grid */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(242,231,245,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(242,231,245,0.6) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }}
+      />
+
+      <div className="max-w-[1400px] mx-auto relative">
+        {/* CTA row */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 lg:gap-16 items-end mb-16 sm:mb-24">
+          <div>
+            <div
+              className="uppercase tracking-[0.32em] font-light mb-4"
+              style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 12 }}
+            >
+              [ Let&apos;s make something ]
+            </div>
+            <a
+              href="mailto:waqasameer654@gmail.com"
+              className="group inline-flex items-baseline gap-3 sm:gap-6 flex-wrap"
+              style={{ color: "#F2E7F5" }}
+            >
+              <span
+                className="font-black uppercase leading-[0.85] tracking-tight"
+                style={{ fontSize: "clamp(2.5rem, 9vw, 8rem)" }}
+              >
+                Say
+              </span>
+              <span
+                className="italic font-light leading-[0.85]"
+                style={{
+                  fontFamily: "'Instrument Serif', serif",
+                  fontSize: "clamp(2.5rem, 9vw, 8rem)",
+                  background: "linear-gradient(93deg, #F5C518 0%, #B600A8 60%, #06B6D4 100%)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  color: "transparent",
+                }}
+              >
+                hello
+              </span>
+              <span
+                className="font-black uppercase leading-[0.85] tracking-tight transition-transform duration-300 group-hover:translate-x-2 inline-flex items-center gap-2"
+                style={{ fontSize: "clamp(2.5rem, 9vw, 8rem)" }}
+              >
+                &rarr;
+              </span>
+            </a>
+            <div
+              className="mt-6 font-light max-w-lg"
+              style={{ color: "#D7E2EA", opacity: 0.7, fontSize: "clamp(0.95rem, 1.15vw, 1.1rem)" }}
+            >
+              Freelance projects, full-time roles, collaborations, or just to nerd out about
+              distributed systems &mdash; my inbox is open.
+            </div>
+          </div>
+
+          {/* status card */}
+          <div
+            className="rounded-2xl p-6 min-w-[260px]"
+            style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(215,226,234,0.14)" }}
+          >
+            <div className="flex items-center gap-2 mb-3">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full opacity-60 animate-ping" style={{ background: "#22c55e" }} />
+                <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: "#22c55e" }} />
+              </span>
+              <span className="uppercase tracking-[0.24em] font-medium" style={{ color: "#22c55e", fontSize: 11 }}>
+                Available for work
+              </span>
+            </div>
+            <div className="flex items-center gap-2 mb-1" style={{ color: "#F2E7F5" }}>
+              <MapPin size={14} style={{ opacity: 0.7 }} />
+              <span className="text-sm font-light">Lahore, Pakistan</span>
+            </div>
+            <div className="text-sm font-light" style={{ color: "#D7E2EA", opacity: 0.7 }}>
+              Local time <span style={{ color: "#F5C518" }}>{time || "--:--"}</span> &middot; PKT
+            </div>
+          </div>
+        </div>
+
+        {/* link columns */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mb-16 sm:mb-24">
+          <div>
+            <div className="uppercase tracking-[0.28em] font-medium mb-4" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
+              Elsewhere
+            </div>
+            <ul className="flex flex-col gap-3">
+              {socials.map((s) => (
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group inline-flex items-center gap-2 font-medium transition-colors"
+                    style={{ color: "#F2E7F5", fontSize: 15 }}
+                  >
+                    <s.icon size={16} style={{ opacity: 0.7 }} />
+                    <span className="group-hover:underline decoration-[#F5C518] underline-offset-4">
+                      {s.label}
+                    </span>
+                    <ArrowUpRight size={14} className="opacity-0 -translate-x-1 group-hover:opacity-70 group-hover:translate-x-0 transition-all" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div className="uppercase tracking-[0.28em] font-medium mb-4" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
+              Sitemap
+            </div>
+            <ul className="flex flex-col gap-3">
+              {nav.map((n) => (
+                <li key={n.label}>
+                  <a
+                    href={n.href}
+                    className="font-medium hover:underline decoration-[#B600A8] underline-offset-4"
+                    style={{ color: "#F2E7F5", fontSize: 15 }}
+                  >
+                    {n.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div className="uppercase tracking-[0.28em] font-medium mb-4" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
+              Stack of the moment
+            </div>
+            <ul className="flex flex-col gap-2 font-light" style={{ color: "#D7E2EA", opacity: 0.85, fontSize: 14 }}>
+              <li>React &middot; Next.js</li>
+              <li>Node &middot; Postgres</li>
+              <li>Socket.IO &middot; Redis</li>
+              <li>LangChain &middot; Gemini</li>
+            </ul>
+          </div>
+
+          <div>
+            <div className="uppercase tracking-[0.28em] font-medium mb-4" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
+              Colophon
+            </div>
+            <p className="font-light" style={{ color: "#D7E2EA", opacity: 0.75, fontSize: 14, lineHeight: 1.6 }}>
+              Hand-built with React, TanStack Start, Tailwind &amp; Framer Motion. Set in Kanit
+              &amp; Instrument Serif. No templates were harmed.
+            </p>
+          </div>
+        </div>
+
+        {/* GIANT wordmark */}
+        <div className="relative -mx-2 mb-10">
+          <div
+            className="font-black uppercase leading-[0.8] tracking-tight text-center select-none"
+            style={{
+              fontSize: "clamp(4rem, 22vw, 22rem)",
+              background: "linear-gradient(180deg, rgba(242,231,245,0.85) 0%, rgba(242,231,245,0.08) 100%)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
+          >
+            WAQAS.
+          </div>
+        </div>
+
+        {/* bottom bar */}
+        <div
+          className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+          style={{ borderTop: "1px solid rgba(215,226,234,0.1)" }}
+        >
+          <div className="uppercase tracking-[0.24em] font-light" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
+            &copy; {year} Waqas Ameer &middot; Brewed with chai in Pakistan
+          </div>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="group inline-flex items-center gap-2 uppercase tracking-[0.24em] font-medium"
+            style={{ color: "#F5C518", fontSize: 11 }}
+          >
+            <span>Back to top</span>
+            <span
+              className="w-8 h-8 rounded-full flex items-center justify-center transition-transform group-hover:-translate-y-1"
+              style={{ border: "1px solid #F5C518" }}
+            >
+              <ArrowUp size={14} />
+            </span>
+          </button>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 /* ---------- Page ---------- */
 
 function Index() {
@@ -790,7 +1205,9 @@ function Index() {
       <AboutSection />
       <ServicesSection />
       <ProjectsSection />
+      <Footer />
     </main>
   );
 }
+
 
