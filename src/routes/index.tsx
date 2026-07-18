@@ -933,6 +933,254 @@ function ProjectsSection() {
   );
 }
 
+/* ---------- Footer ---------- */
+
+function useLahoreTime() {
+  const [time, setTime] = useState<string>("");
+  useEffect(() => {
+    const tick = () => {
+      try {
+        setTime(
+          new Intl.DateTimeFormat("en-GB", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+            timeZone: "Asia/Karachi",
+          }).format(new Date()),
+        );
+      } catch {
+        setTime("");
+      }
+    };
+    tick();
+    const id = setInterval(tick, 30_000);
+    return () => clearInterval(id);
+  }, []);
+  return time;
+}
+
+function Footer() {
+  const time = useLahoreTime();
+  const year = new Date().getFullYear();
+
+  const socials = [
+    { label: "GitHub", href: "https://github.com/wolfie2007", icon: Github },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/waqas-ameer/", icon: Linkedin },
+    { label: "Email", href: "mailto:waqasameer654@gmail.com", icon: Mail },
+  ];
+
+  const nav = [
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Projects", href: "#projects" },
+    { label: "Resume", href: "/Waqas_Ameer_Resume.pdf" },
+  ];
+
+  return (
+    <footer
+      className="relative overflow-hidden pt-20 sm:pt-28 md:pt-36 pb-8 px-5 sm:px-8 md:px-12 lg:px-16"
+      style={{
+        background:
+          "radial-gradient(120% 90% at 100% 0%, rgba(182,0,168,0.22) 0%, transparent 55%), radial-gradient(90% 80% at 0% 100%, rgba(6,182,212,0.18) 0%, transparent 55%), #0A0413",
+        borderTop: "1px solid rgba(215,226,234,0.1)",
+      }}
+    >
+      {/* asymmetric decorative grid */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(242,231,245,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(242,231,245,0.6) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }}
+      />
+
+      <div className="max-w-[1400px] mx-auto relative">
+        {/* CTA row */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 lg:gap-16 items-end mb-16 sm:mb-24">
+          <div>
+            <div
+              className="uppercase tracking-[0.32em] font-light mb-4"
+              style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 12 }}
+            >
+              [ Let&apos;s make something ]
+            </div>
+            <a
+              href="mailto:waqasameer654@gmail.com"
+              className="group inline-flex items-baseline gap-3 sm:gap-6 flex-wrap"
+              style={{ color: "#F2E7F5" }}
+            >
+              <span
+                className="font-black uppercase leading-[0.85] tracking-tight"
+                style={{ fontSize: "clamp(2.5rem, 9vw, 8rem)" }}
+              >
+                Say
+              </span>
+              <span
+                className="italic font-light leading-[0.85]"
+                style={{
+                  fontFamily: "'Instrument Serif', serif",
+                  fontSize: "clamp(2.5rem, 9vw, 8rem)",
+                  background: "linear-gradient(93deg, #F5C518 0%, #B600A8 60%, #06B6D4 100%)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  color: "transparent",
+                }}
+              >
+                hello
+              </span>
+              <span
+                className="font-black uppercase leading-[0.85] tracking-tight transition-transform duration-300 group-hover:translate-x-2 inline-flex items-center gap-2"
+                style={{ fontSize: "clamp(2.5rem, 9vw, 8rem)" }}
+              >
+                &rarr;
+              </span>
+            </a>
+            <div
+              className="mt-6 font-light max-w-lg"
+              style={{ color: "#D7E2EA", opacity: 0.7, fontSize: "clamp(0.95rem, 1.15vw, 1.1rem)" }}
+            >
+              Freelance projects, full-time roles, collaborations, or just to nerd out about
+              distributed systems &mdash; my inbox is open.
+            </div>
+          </div>
+
+          {/* status card */}
+          <div
+            className="rounded-2xl p-6 min-w-[260px]"
+            style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(215,226,234,0.14)" }}
+          >
+            <div className="flex items-center gap-2 mb-3">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full opacity-60 animate-ping" style={{ background: "#22c55e" }} />
+                <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: "#22c55e" }} />
+              </span>
+              <span className="uppercase tracking-[0.24em] font-medium" style={{ color: "#22c55e", fontSize: 11 }}>
+                Available for work
+              </span>
+            </div>
+            <div className="flex items-center gap-2 mb-1" style={{ color: "#F2E7F5" }}>
+              <MapPin size={14} style={{ opacity: 0.7 }} />
+              <span className="text-sm font-light">Lahore, Pakistan</span>
+            </div>
+            <div className="text-sm font-light" style={{ color: "#D7E2EA", opacity: 0.7 }}>
+              Local time <span style={{ color: "#F5C518" }}>{time || "--:--"}</span> &middot; PKT
+            </div>
+          </div>
+        </div>
+
+        {/* link columns */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mb-16 sm:mb-24">
+          <div>
+            <div className="uppercase tracking-[0.28em] font-medium mb-4" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
+              Elsewhere
+            </div>
+            <ul className="flex flex-col gap-3">
+              {socials.map((s) => (
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group inline-flex items-center gap-2 font-medium transition-colors"
+                    style={{ color: "#F2E7F5", fontSize: 15 }}
+                  >
+                    <s.icon size={16} style={{ opacity: 0.7 }} />
+                    <span className="group-hover:underline decoration-[#F5C518] underline-offset-4">
+                      {s.label}
+                    </span>
+                    <ArrowUpRight size={14} className="opacity-0 -translate-x-1 group-hover:opacity-70 group-hover:translate-x-0 transition-all" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div className="uppercase tracking-[0.28em] font-medium mb-4" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
+              Sitemap
+            </div>
+            <ul className="flex flex-col gap-3">
+              {nav.map((n) => (
+                <li key={n.label}>
+                  <a
+                    href={n.href}
+                    className="font-medium hover:underline decoration-[#B600A8] underline-offset-4"
+                    style={{ color: "#F2E7F5", fontSize: 15 }}
+                  >
+                    {n.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div className="uppercase tracking-[0.28em] font-medium mb-4" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
+              Stack of the moment
+            </div>
+            <ul className="flex flex-col gap-2 font-light" style={{ color: "#D7E2EA", opacity: 0.85, fontSize: 14 }}>
+              <li>React &middot; Next.js</li>
+              <li>Node &middot; Postgres</li>
+              <li>Socket.IO &middot; Redis</li>
+              <li>LangChain &middot; Gemini</li>
+            </ul>
+          </div>
+
+          <div>
+            <div className="uppercase tracking-[0.28em] font-medium mb-4" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
+              Colophon
+            </div>
+            <p className="font-light" style={{ color: "#D7E2EA", opacity: 0.75, fontSize: 14, lineHeight: 1.6 }}>
+              Hand-built with React, TanStack Start, Tailwind &amp; Framer Motion. Set in Kanit
+              &amp; Instrument Serif. No templates were harmed.
+            </p>
+          </div>
+        </div>
+
+        {/* GIANT wordmark */}
+        <div className="relative -mx-2 mb-10">
+          <div
+            className="font-black uppercase leading-[0.8] tracking-tight text-center select-none"
+            style={{
+              fontSize: "clamp(4rem, 22vw, 22rem)",
+              background: "linear-gradient(180deg, rgba(242,231,245,0.85) 0%, rgba(242,231,245,0.08) 100%)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
+          >
+            WAQAS.
+          </div>
+        </div>
+
+        {/* bottom bar */}
+        <div
+          className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+          style={{ borderTop: "1px solid rgba(215,226,234,0.1)" }}
+        >
+          <div className="uppercase tracking-[0.24em] font-light" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
+            &copy; {year} Waqas Ameer &middot; Brewed with chai in Pakistan
+          </div>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="group inline-flex items-center gap-2 uppercase tracking-[0.24em] font-medium"
+            style={{ color: "#F5C518", fontSize: 11 }}
+          >
+            <span>Back to top</span>
+            <span
+              className="w-8 h-8 rounded-full flex items-center justify-center transition-transform group-hover:-translate-y-1"
+              style={{ border: "1px solid #F5C518" }}
+            >
+              <ArrowUp size={14} />
+            </span>
+          </button>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 /* ---------- Page ---------- */
 
 function Index() {
@@ -957,7 +1205,9 @@ function Index() {
       <AboutSection />
       <ServicesSection />
       <ProjectsSection />
+      <Footer />
     </main>
   );
 }
+
 
