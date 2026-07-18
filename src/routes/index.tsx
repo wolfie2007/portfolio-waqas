@@ -840,7 +840,7 @@ function Footer() {
             >
               [ Let&apos;s make something ]
             </div>
-            <a
+            
               href="mailto:waqasameer654@gmail.com"
               className="group inline-flex items-baseline gap-3 sm:gap-6 flex-wrap"
               style={{ color: "#F2E7F5" }}
@@ -896,16 +896,19 @@ function Footer() {
             </div>
             <div className="flex items-center gap-2 mb-1" style={{ color: "#F2E7F5" }}>
               <MapPin size={14} style={{ opacity: 0.7 }} />
-              <span className="text-sm font-light">Lahore, Pakistan</span>
+              <span className="text-sm font-light">Islamabad, Pakistan</span>
+            </div>
+            <div className="text-sm font-light mb-1" style={{ color: "#D7E2EA", opacity: 0.7 }}>
+              Local time <span style={{ color: "#F5C518" }}>{time || "--:--"}</span> &middot; PKT
             </div>
             <div className="text-sm font-light" style={{ color: "#D7E2EA", opacity: 0.7 }}>
-              Local time <span style={{ color: "#F5C518" }}>{time || "--:--"}</span> &middot; PKT
+              Open to remote work &middot; worldwide
             </div>
           </div>
         </div>
 
         {/* link columns */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mb-16 sm:mb-24">
+        <div className="flex flex-wrap gap-16 sm:gap-24 mb-16 sm:mb-24">
           <div>
             <div className="uppercase tracking-[0.28em] font-medium mb-4" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
               Elsewhere
@@ -913,7 +916,7 @@ function Footer() {
             <ul className="flex flex-col gap-3">
               {socials.map((s) => (
                 <li key={s.label}>
-                  <a
+                  
                     href={s.href}
                     target="_blank"
                     rel="noreferrer"
@@ -938,7 +941,7 @@ function Footer() {
             <ul className="flex flex-col gap-3">
               {nav.map((n) => (
                 <li key={n.label}>
-                  <a
+                  
                     href={n.href}
                     className="font-medium hover:underline decoration-[#B600A8] underline-offset-4"
                     style={{ color: "#F2E7F5", fontSize: 15 }}
@@ -949,28 +952,6 @@ function Footer() {
               ))}
             </ul>
           </div>
-
-          <div>
-            <div className="uppercase tracking-[0.28em] font-medium mb-4" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
-              Stack of the moment
-            </div>
-            <ul className="flex flex-col gap-2 font-light" style={{ color: "#D7E2EA", opacity: 0.85, fontSize: 14 }}>
-              <li>React &middot; Next.js</li>
-              <li>Node &middot; Postgres</li>
-              <li>Socket.IO &middot; Redis</li>
-              <li>LangChain &middot; Gemini</li>
-            </ul>
-          </div>
-
-          <div>
-            <div className="uppercase tracking-[0.28em] font-medium mb-4" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
-              Colophon
-            </div>
-            <p className="font-light" style={{ color: "#D7E2EA", opacity: 0.75, fontSize: 14, lineHeight: 1.6 }}>
-              Hand-built with React, TanStack Start, Tailwind &amp; Framer Motion. Set in Kanit
-              &amp; Instrument Serif. No templates were harmed.
-            </p>
-          </div>
         </div>
 
         {/* GIANT wordmark */}
@@ -979,10 +960,8 @@ function Footer() {
             className="font-black uppercase leading-[0.8] tracking-tight text-center select-none"
             style={{
               fontSize: "clamp(4rem, 22vw, 22rem)",
-              background: "linear-gradient(180deg, rgba(242,231,245,0.85) 0%, rgba(242,231,245,0.08) 100%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
               color: "transparent",
+              WebkitTextStroke: "1.5px rgba(242,231,245,0.5)",
             }}
           >
             WAQAS.
@@ -995,7 +974,7 @@ function Footer() {
           style={{ borderTop: "1px solid rgba(215,226,234,0.1)" }}
         >
           <div className="uppercase tracking-[0.24em] font-light" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
-            &copy; {year} Waqas Ameer &middot; Brewed with chai in Pakistan
+            &copy; {year} Waqas Ameer
           </div>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
