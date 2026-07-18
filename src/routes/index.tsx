@@ -916,7 +916,7 @@ function Footer() {
             <ul className="flex flex-col gap-3">
               {socials.map((s) => (
                 <li key={s.label}>
-                  
+              <a
                     href={s.href}
                     target="_blank"
                     rel="noreferrer"
@@ -941,7 +941,7 @@ function Footer() {
             <ul className="flex flex-col gap-3">
               {nav.map((n) => (
                 <li key={n.label}>
-                  
+                  <a
                     href={n.href}
                     className="font-medium hover:underline decoration-[#B600A8] underline-offset-4"
                     style={{ color: "#F2E7F5", fontSize: 15 }}
