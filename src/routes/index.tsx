@@ -887,7 +887,7 @@ function Footer() {
             >
               [ Let&apos;s make something ]
             </div>
-            <a
+            
               href="mailto:waqasameer654@gmail.com"
               className="group inline-flex items-baseline gap-3 sm:gap-6 flex-wrap"
               style={{ color: "#F2E7F5" }}
@@ -966,26 +966,6 @@ function Footer() {
               ))}
             </div>
           </div>
-            <ul className="flex flex-col gap-3">
-              {socials.map((s) => (
-                <li key={s.label}>
-              <a
-                    href={s.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group inline-flex items-center gap-2 font-medium transition-colors"
-                    style={{ color: "#F2E7F5", fontSize: 15 }}
-                  >
-                    <s.icon size={16} style={{ opacity: 0.7 }} />
-                    <span className="group-hover:underline decoration-[#F5C518] underline-offset-4">
-                      {s.label}
-                    </span>
-                    <ArrowUpRight size={14} className="opacity-0 -translate-x-1 group-hover:opacity-70 group-hover:translate-x-0 transition-all" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
 
           <div>
             <div className="uppercase tracking-[0.28em] font-medium mb-4" style={{ color: "#D7E2EA", opacity: 0.55, fontSize: 11 }}>
@@ -994,7 +974,7 @@ function Footer() {
             <ul className="flex flex-col gap-3">
               {nav.map((n) => (
                 <li key={n.label}>
-                  <a
+                  
                     href={n.href}
                     className="font-medium hover:underline decoration-[#B600A8] underline-offset-4"
                     style={{ color: "#F2E7F5", fontSize: 15 }}
