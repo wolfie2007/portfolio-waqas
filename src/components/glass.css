@@ -1,0 +1,61 @@
+/* ================================================================
+   Liquid glass button. Clear, not frosted: the backdrop is bent at
+   the rim (with a slight colour split) and light catches the edges.
+   Layers: refracted backdrop → cursor light → edge light → text
+   ================================================================ */
+.lg {
+  --mx: 30%; --my: 0%;
+  position: relative; isolation: isolate;
+  display: inline-flex; align-items: center; gap: 12px;
+  height: 56px; padding: 0 22px 0 26px;
+  border-radius: var(--r-l);
+  color: #fff; text-decoration: none;
+  font-size: 16px; font-weight: 560; letter-spacing: -.005em;
+  transform: translateZ(0);
+  transition: transform .7s cubic-bezier(.34,1.56,.64,1);
+  box-shadow: 0 14px 34px -16px rgba(0,0,0,.6);
+}
+.lg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.lg-glass {
+  position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+  -webkit-backdrop-filter: blur(14px) saturate(1.6) brightness(1.12);
+  backdrop-filter: blur(14px) saturate(1.6) brightness(1.12);
+  background: rgba(255,255,255,.06);
+}
+.lg.is-refract .lg-glass {
+  backdrop-filter: var(--lg-filter) saturate(1.25) brightness(1.18);
+  background: rgba(255,255,255,.025);
+}
+
+/* light that follows the cursor across the surface */
+.lg-shine {
+  position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(90px 60px at var(--mx) var(--my), rgba(255,255,255,.16), transparent 70%);
+  opacity: 0; transition: opacity .5s;
+}
+.lg:hover .lg-shine { opacity: 1; }
+
+/* the edge: bright where the light hits (top-left), a second catch bottom-right */
+.lg::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  padding: 1px;
+  background: linear-gradient(135deg,
+    rgba(255,255,255,.95) 0%, rgba(255,255,255,.28) 16%, rgba(255,255,255,.06) 42%,
+    rgba(255,255,255,.06) 60%, rgba(255,255,255,.32) 86%, rgba(255,255,255,.75) 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+}
+/* thickness: soft inner light along the same two edges */
+.lg::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  box-shadow:
+    inset 2px 2px 2px -1px rgba(255,255,255,.35),
+    inset -2px -2px 2px -1px rgba(255,255,255,.18),
+    inset 0 0 18px rgba(255,255,255,.05);
+}
+
+.lg-body { display: inline-flex; align-items: center; gap: 12px; text-shadow: 0 1px 10px rgba(0,0,0,.45); }
+.lg:hover { transform: translateZ(0) scale(1.04); }
+.lg:active { transform: translateZ(0) scale(.95, .93); transition-duration: .18s; }
+.lg:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; }

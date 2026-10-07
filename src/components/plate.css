@@ -1,0 +1,69 @@
+/* A plate is a photograph shown in its true colours. Hover: the image pushes
+   in slowly and four orange crop marks close around it, like framing a shot. */
+.plate {
+  position: relative;
+  container-type: inline-size;
+}
+.plate-glass {
+  position: absolute; inset: 0;
+  overflow: hidden;
+  background: #1d1d1d;
+  border-radius: var(--r-l);
+}
+.plate-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: scale(1.001);
+  transition: transform 1.6s var(--ease-out);
+  user-select: none;
+}
+.plate-crop { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.plate-crop i {
+  position: absolute; width: 22px; height: 22px;
+  border: 0 solid var(--orange);
+  opacity: 0; transition: opacity .35s, transform .7s var(--ease-out);
+}
+.plate-crop i:nth-child(1) { left: 14px; top: 14px; border-width: 2px 0 0 2px; border-top-left-radius: var(--r-xs); transform: translate(-8px, -8px); }
+.plate-crop i:nth-child(2) { right: 14px; top: 14px; border-width: 2px 2px 0 0; border-top-right-radius: var(--r-xs); transform: translate(8px, -8px); }
+.plate-crop i:nth-child(3) { left: 14px; bottom: 14px; border-width: 0 0 2px 2px; border-bottom-left-radius: var(--r-xs); transform: translate(-8px, 8px); }
+.plate-crop i:nth-child(4) { right: 14px; bottom: 14px; border-width: 0 2px 2px 0; border-bottom-right-radius: var(--r-xs); transform: translate(8px, 8px); }
+@media (hover: hover) {
+  .plate:hover .plate-img { transform: scale(1.045); }
+  .plate:hover .plate-crop i { opacity: 1; transform: none; }
+}
+
+.plate-no {
+  position: absolute; right: 0; top: 0;
+  width: 9cqw; height: 9cqw;
+  display: grid; place-items: end start;
+  padding: 0 0 .6cqw 1.4cqw;
+  color: var(--mark);
+  font-weight: 600; line-height: 1.15; font-size: clamp(8px, 1.6cqw, 11px);
+  pointer-events: none;
+}
+
+.plate-over { position: absolute; inset: 0; pointer-events: none; }
+.plate-over > * { position: absolute; }
+
+/* RA/Dec cursor readout */
+.plate { cursor: crosshair; }
+.plate-read {
+  position: absolute; pointer-events: none; z-index: 3;
+}
+.plate-read::before, .plate-read::after { content: ''; position: absolute; background: var(--orange); }
+.plate-read::before { width: 1px; height: 26px; left: 0; top: -13px; }
+.plate-read::after { height: 1px; width: 26px; top: 0; left: -13px; }
+.plate-read span {
+  position: absolute; left: 14px; top: 10px; white-space: nowrap;
+  background: var(--ink); color: var(--paper); padding: 5px 8px; font-size: 9.5px; border-radius: var(--r-s);
+}
+
+/* ---------- orange markings ---------- */
+.mark-ring { overflow: visible; }
+.mark-ring path, .mark-line path { fill: none; stroke: var(--orange); stroke-width: 2.2; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.mark-text {
+  font-family: var(--sans); font-weight: 600; font-size: clamp(11px, 1.05vw, 15px); line-height: 1.25;
+  color: var(--orange); white-space: nowrap;
+  background: var(--paper); padding: 8px 12px 9px; border-radius: var(--r-s);
+}
+.mark-text .mono { display: block; color: inherit; margin-bottom: 3px; }

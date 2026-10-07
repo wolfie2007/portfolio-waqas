@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Waqas Ameer — Archive of things I can't stop looking at</title>
+    <meta name="description" content="The visual journal of Waqas Ameer, a computer-science student in Islamabad who builds real-time software and can't stop looking up: space, AI, science and the machines he's built." />
+    <meta name="theme-color" content="#171717" />
+    <meta property="og:title" content="Waqas Ameer — Archive of things I can't stop looking at" />
+    <meta property="og:description" content="Space, AI, science, and the things I've built, filed as plates from 10²² m down to 10⁻⁹ m." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <style>
+      /* The preloader lives here, not in the bundle, so it is on screen from
+         the very first paint. It needs no image, no font and no JavaScript to
+         look right; the bundle only feeds it real progress and plays the exit. */
+      html, body { background: #171717; margin: 0; }
+      body.is-loading { overflow: hidden; }
+      @property --hole { syntax: '<length>'; inherits: false; initial-value: 0px; }
+      #pl {
+        position: fixed; inset: 0; z-index: 100; background: #171717; color: #FFF8F3;
+        --hole: 0px;
+        -webkit-mask: radial-gradient(circle at 50% 50%, transparent var(--hole), #000 calc(var(--hole) + .5px));
+        mask: radial-gradient(circle at 50% 50%, transparent var(--hole), #000 calc(var(--hole) + .5px));
+      }
+      #pl svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+      /* every ring is twice the size of the one inside it, so scaling the whole
+         set by 2x lands it exactly on itself: an endless zoom through scales */
+      #pl .zoom { animation: pl-zoom 2.2s linear infinite; transform-box: view-box; transform-origin: 0 0; will-change: transform; }
+      @keyframes pl-zoom { from { transform: scale(1); } to { transform: scale(2); } }
+      #pl .ring { fill: none; stroke: #FFF8F3; }
+      #pl .r-line { stroke-opacity: .14; stroke-width: .5; }
+      #pl .r-tick { stroke-opacity: .32; stroke-width: 2.4; }
+      #pl .hair { stroke: #FFF8F3; stroke-opacity: .08; stroke-width: 1; }
+      #pl .arc-bg { fill: #171717; stroke: #FFF8F3; stroke-opacity: .14; stroke-width: 1.5; }
+      #pl .arc { fill: none; stroke: #FF5A1F; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transform: rotate(-90deg); }
+      #pl .dot { fill: #FF5A1F; }
+      #pl .txt {
+        position: absolute; bottom: clamp(18px, 4vh, 40px);
+        font-family: 'Funnel Display Variable', system-ui, sans-serif;
+        opacity: 0; transition: opacity .6s;
+      }
+      #pl.fonts .txt { opacity: 1; }
+      #pl .who { left: clamp(20px, 4vw, 56px); font-weight: 700; font-size: clamp(22px, 2.4vw, 34px); letter-spacing: -.035em; line-height: 1; }
+      #pl .who span { display: block; margin-top: 8px; font: 500 14px/1.2 'Funnel Sans Variable', system-ui, sans-serif; letter-spacing: 0; color: rgba(255,248,243,.55); }
+      #pl .pct { right: clamp(20px, 4vw, 56px); font-weight: 700; font-size: clamp(56px, 7vw, 112px); letter-spacing: -.05em; line-height: .78; font-variant-numeric: tabular-nums; }
+      #pl .pct i { font-style: normal; color: #FF5A1F; }
+      @media (prefers-reduced-motion: reduce) { #pl .zoom { animation: none; } }
+    </style>
+  </head>
+  <body class="is-loading">
+    <div id="pl" role="status" aria-label="Loading">
+      <svg viewBox="-500 -500 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path class="hair" d="M-2000 0H2000M0 -2000V2000" />
+        <g class="zoom">
+          <circle class="ring r-line" r="4" /><circle class="ring r-tick" r="4" pathLength="72" stroke-dasharray=".06 .94" />
+          <circle class="ring r-line" r="8" /><circle class="ring r-tick" r="8" pathLength="72" stroke-dasharray=".06 .94" />
+          <circle class="ring r-line" r="16" /><circle class="ring r-tick" r="16" pathLength="72" stroke-dasharray=".06 .94" />
+          <circle class="ring r-line" r="32" /><circle class="ring r-tick" r="32" pathLength="72" stroke-dasharray=".06 .94" />
+          <circle class="ring r-line" r="64" /><circle class="ring r-tick" r="64" pathLength="72" stroke-dasharray=".06 .94" />
+          <circle class="ring r-line" r="128" /><circle class="ring r-tick" r="128" pathLength="72" stroke-dasharray=".06 .94" />
+          <circle class="ring r-line" r="256" /><circle class="ring r-tick" r="256" pathLength="72" stroke-dasharray=".06 .94" />
+          <circle class="ring r-line" r="512" /><circle class="ring r-tick" r="512" pathLength="72" stroke-dasharray=".06 .94" />
+          <circle class="ring r-line" r="1024" /><circle class="ring r-tick" r="1024" pathLength="72" stroke-dasharray=".06 .94" />
+        </g>
+        <circle class="arc-bg" r="30" />
+        <circle class="arc" r="30" pathLength="1" />
+        <circle class="dot" r="4" />
+      </svg>
+      <div class="txt who">Waqas Ameer<span>Zooming in from 10<sup>26</sup> m</span></div>
+      <div class="txt pct"><b>0</b><i>%</i></div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

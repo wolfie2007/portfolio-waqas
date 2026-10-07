@@ -1,0 +1,56 @@
+/* ================================================================
+   Activity: a year of GitHub as a printed star atlas (paper ground)
+   ================================================================ */
+.lc-head { max-width: 980px; }
+.lc-head .lede { margin-top: 24px; }
+.lc-sup { font-size: .5em; letter-spacing: 0; }
+
+.lc-stats {
+  display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: clamp(16px, 2.4vw, 40px);
+  margin-top: clamp(40px, 5vw, 72px); align-items: end;
+}
+.lc-stat { display: flex; flex-direction: column; gap: 10px; }
+.lc-stat b { font-size: clamp(44px, 5vw, 84px); font-weight: 700; font-variant-numeric: tabular-nums; }
+.lc-stat span { font-size: 15px; line-height: 1.35; color: var(--dim); max-width: 14em; }
+.lc-total b { font-size: clamp(88px, 11vw, 190px); color: var(--orange); }
+
+.lc-fig { margin: clamp(32px, 4vw, 56px) 0 0; }
+.lc-map { position: relative; }
+.lc-map svg { width: 100%; height: auto; overflow: visible; touch-action: pan-y; }
+.lc-wait {
+  display: grid; place-items: center; height: 240px; color: var(--dim);
+  background: rgba(23,23,23,.04); border-radius: var(--r-l);
+}
+
+.lc-axes text { font: 500 10.5px var(--mono); font-stretch: 80%; fill: rgba(23,23,23,.5); }
+.lc-base { stroke: rgba(23,23,23,.25); stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.lc-star circle { fill: var(--ink); transition: fill .2s; }
+.lc-star.is-zero circle { fill: rgba(23,23,23,.18); }
+.lc-star.is-hot circle { fill: var(--orange); }
+.lc-spike { stroke: var(--orange); stroke-width: .9; opacity: .7; vector-effect: non-scaling-stroke; }
+.lc-star.is-on circle { fill: var(--orange); }
+.lc-ring { fill: none; stroke: var(--orange); stroke-width: 1.5; vector-effect: non-scaling-stroke; pointer-events: none; }
+.lc-band { fill: rgba(255,90,31,.08); }
+.lc-streak { fill: none; stroke: var(--orange); stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.lc-streak-t { font: 600 12px var(--sans); fill: var(--orange); }
+
+.lc-area { fill: rgba(23,23,23,.06); }
+.lc-line { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+
+.lc-tip {
+  position: absolute; pointer-events: none; z-index: 2;
+  transform: translate(-50%, calc(-100% - 16px));
+  display: flex; flex-direction: column; gap: 2px; white-space: nowrap;
+  padding: 8px 11px; border-radius: var(--r-s);
+  background: var(--ink); color: var(--paper); font-size: 13px; line-height: 1.25;
+}
+.lc-tip b { font-weight: 650; }
+.lc-tip span { color: rgba(255,248,243,.6); font-size: 12px; }
+
+@media (max-width: 860px) {
+  .lc-stats { grid-template-columns: 1fr 1fr; }
+  .lc-total { grid-column: 1 / -1; }
+  .lc-map { overflow-x: auto; }
+  .lc-map svg { min-width: 760px; }
+}

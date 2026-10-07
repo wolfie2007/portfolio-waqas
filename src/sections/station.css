@@ -1,0 +1,45 @@
+/* ================================================================
+   Plate 003 — station (orange ground, Earth in linework)
+   ================================================================ */
+.st { overflow: hidden; }
+.st-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(28px, 4vw, 72px); align-items: center;
+}
+.st-head .lede { margin-top: 24px; }
+.st .eyebrow .no { color: var(--ink); }
+
+.st-log { margin-top: clamp(28px, 4vw, 52px); border-top: 1.5px solid var(--ink); }
+.st-log > div {
+  display: grid; grid-template-columns: 9.5em 1fr; gap: 16px; align-items: baseline;
+  padding: 12px 0; border-bottom: 1px solid var(--hair);
+}
+.st-log dt { color: var(--dim); }
+.st-log dd { margin: 0; font-size: 15.5px; font-weight: 520; line-height: 1.4; }
+
+.st-globe { margin: 0; position: relative; }
+.st-globe svg { width: 100%; height: auto; overflow: visible; }
+.st-sphere { fill: rgba(255,248,243,.08); stroke: var(--ink); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.st-grat { fill: none; stroke: rgba(23,23,23,.26); stroke-width: .8; vector-effect: non-scaling-stroke; }
+.st-land { fill: rgba(23,23,23,.86); stroke: var(--ink); stroke-width: .6; vector-effect: non-scaling-stroke; }
+.st-orb { fill: none; stroke: var(--paper); stroke-width: 1.4; stroke-dasharray: 5 6; vector-effect: non-scaling-stroke; }
+.st-mark { transition: opacity .4s; }
+.st-mark circle { fill: none; stroke: var(--paper); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.st-mark .st-dot { fill: var(--paper); }
+.st-mark path { fill: none; stroke: var(--paper); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.st-mark text { fill: var(--paper); font: 700 17px var(--display); letter-spacing: -.01em; paint-order: stroke; stroke: var(--ink); stroke-width: 3px; stroke-linejoin: round; }
+.st-mark .st-sm { font: 500 10.5px var(--mono); font-stretch: 75%; letter-spacing: .08em; }
+
+.st-cap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 18px; margin-top: 14px; color: var(--dim); }
+.st-scale { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); }
+.st-scale i { width: 64px; height: 7px; border: 1.5px solid var(--ink); border-top: 0; }
+.st-cap sup { font-size: .75em; }
+
+@media (max-width: 999px) {
+  .st-grid { grid-template-columns: 1fr; }
+  .st-globe { order: -1; width: min(100%, 560px); margin-inline: auto; }
+}
+@media (max-width: 520px) {
+  .st-log > div { grid-template-columns: 1fr; gap: 2px; }
+  .st-mark text { font-size: 22px; }
+}

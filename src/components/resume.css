@@ -1,0 +1,56 @@
+/* ================================================================
+   Résumé button — the peek animation is preserved from the old site
+   (_archive/resume-button.css); only the skin changed.
+   ================================================================ */
+.btn-pill {
+  display: inline-flex; align-items: center; gap: 14px;
+  background: var(--fg); color: var(--bg);
+  border: 1px solid var(--fg);
+  padding: 5px 5px 5px 18px; border-radius: var(--r-m);
+  font-family: var(--mono); font-stretch: 75%; font-size: 11px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; text-decoration: none;
+  transition: background-color .5s var(--ease-out), color .5s var(--ease-out), transform .7s cubic-bezier(.32,.72,0,1);
+  width: fit-content;
+}
+.btn-pill .icon-circle {
+  width: 34px; height: 34px; display: grid; place-items: center;
+  background: var(--mark); color: var(--ink); border-radius: var(--r-s);
+  transition: transform .7s cubic-bezier(.32,.72,0,1), background-color .4s;
+}
+.btn-pill:hover { background: var(--bg); color: var(--fg); }
+.btn-pill:hover .icon-circle { transform: translateY(2px); }
+
+.resume-btn-wrap { position: relative; display: inline-block; }
+.btn-pill-resume { position: relative; z-index: 2; }
+
+.resume-btn-wrap .peek-window {
+  position: absolute;
+  bottom: 100%;
+  left: 4px; right: 4px;
+  height: 110px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+.resume-preview {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  width: 72px; height: 96px;
+  background: #ffffff;
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 6px 14px rgba(0,0,0,.35);
+  transform: translateX(-50%) rotate(-3deg);
+  padding: 8px 7px;
+  box-sizing: border-box;
+  transition: bottom .4s cubic-bezier(.22, 1, .36, 1);
+}
+.resume-preview .line { background: #d9d9d9; border-radius: 1.5px; height: 3px; margin-bottom: 5px; }
+.resume-preview .name { background: #171717; height: 6px; width: 65%; margin-bottom: 4px; }
+.resume-preview .title { background: var(--orange); height: 3px; width: 45%; margin-bottom: 8px; }
+.resume-preview .line.w90 { width: 90%; }
+.resume-preview .line.w75 { width: 75%; }
+.resume-preview .line.w95 { width: 95%; }
+
+.resume-btn-wrap:hover .resume-preview,
+.resume-btn-wrap:focus-within .resume-preview { bottom: -8px; }

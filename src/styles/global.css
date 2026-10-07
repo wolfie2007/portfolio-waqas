@@ -1,0 +1,170 @@
+@import '@fontsource-variable/funnel-display';
+@import '@fontsource-variable/funnel-sans';
+@import '@fontsource-variable/martian-mono/wdth.css';
+
+/* ================================================================
+   Tokens
+   ================================================================ */
+:root {
+  --orange: #FF5A1F;
+  --ink: #171717;
+  --white: #FFFFFF;
+  --paper: #FFF8F3;
+
+  --display: 'Funnel Display Variable', 'Funnel Display', system-ui, sans-serif;
+  --sans: 'Funnel Sans Variable', 'Funnel Sans', system-ui, sans-serif;
+  --mono: 'Martian Mono Variable', 'Martian Mono', ui-monospace, monospace;
+
+  /* plate-holder margin: the fixed frame sits this far in from the viewport */
+  --m: clamp(10px, 1.6vw, 26px);
+  /* the old bottom index strip is gone; the scale rail floats on the right */
+  --strip: 0px;
+  /* content gutter inside the frame */
+  --g: clamp(20px, 4.2vw, 72px);
+
+  /* soft but precise: small radii, one system everywhere */
+  --r-xs: 4px;
+  --r-s: 6px;
+  --r-m: 10px;
+  --r-l: 14px;
+
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-io: cubic-bezier(.65, 0, .35, 1);
+
+  /* active ground (set per section, read by the frame chrome) */
+  --fg: var(--ink);
+  --bg: var(--paper);
+  --mark: var(--orange);
+  --hair: rgba(23, 23, 23, .2);
+  --dim: rgba(23, 23, 23, .58);
+
+  color-scheme: light;
+}
+
+[data-ground='paper'] { --bg: var(--paper); --fg: var(--ink); --mark: var(--orange); --hair: rgba(23,23,23,.2); --dim: rgba(23,23,23,.58); }
+[data-ground='white'] { --bg: var(--white); --fg: var(--ink); --mark: var(--orange); --hair: rgba(23,23,23,.16); --dim: rgba(23,23,23,.56); }
+[data-ground='ink']   { --bg: var(--ink); --fg: var(--paper); --mark: var(--orange); --hair: rgba(255,248,243,.2); --dim: rgba(255,248,243,.58); }
+[data-ground='orange']{ --bg: var(--orange); --fg: var(--ink); --mark: var(--ink); --hair: rgba(23,23,23,.28); --dim: rgba(23,23,23,.7); }
+
+/* ================================================================
+   Base
+   ================================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 16px/1.55 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+body.is-loading { overflow: hidden; }
+
+img, svg, canvas { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+::selection { background: var(--orange); color: var(--ink); }
+
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ================================================================
+   Sections (grounds)
+   ================================================================ */
+.ground {
+  position: relative;
+  background: var(--bg);
+  color: var(--fg);
+  /* keep content clear of the fixed frame */
+  padding: calc(var(--m) + 56px) calc(var(--m) + var(--g)) calc(var(--m) + var(--strip) + 72px);
+}
+
+/* ================================================================
+   Type primitives
+   ================================================================ */
+.display {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -.045em;
+  line-height: .86;
+  font-feature-settings: 'ss01' 0;
+}
+.mono {
+  font-family: var(--mono);
+  font-stretch: 87%;
+  font-size: 12.5px;
+  line-height: 1.5;
+  letter-spacing: .01em;
+  font-weight: 450;
+}
+.mono b { font-weight: 600; }
+
+.eyebrow {
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  font-family: var(--mono); font-stretch: 75%; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--dim);
+}
+.eyebrow .no { color: var(--mark); font-weight: 600; }
+.eyebrow .exp { color: var(--fg); font-weight: 600; }
+.eyebrow sup { font-size: .8em; letter-spacing: 0; }
+
+.h-section {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(44px, 7.4vw, 132px);
+  letter-spacing: -.05em;
+  line-height: .86;
+  margin-top: 18px;
+  text-wrap: balance;
+}
+.lede {
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.55;
+  max-width: 34em;
+  text-wrap: pretty;
+}
+
+/* draft marker — dev only (see Draft component) */
+.draft-dot {
+  display: inline-block; vertical-align: super; margin-left: 4px;
+  font: 600 8px/1 var(--mono); letter-spacing: .1em; padding: 2px 3px;
+  background: #ffe14d; color: #171717; border-radius: 2px;
+}
+
+/* ================================================================
+   Shared plate primitives
+   ================================================================ */
+.reg {
+  position: absolute; width: 22px; height: 22px; pointer-events: none;
+}
+.reg::before, .reg::after { content: ''; position: absolute; background: currentColor; }
+.reg::before { left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-.5px); }
+.reg::after { top: 50%; left: 0; right: 0; height: 1px; transform: translateY(-.5px); }
+.reg i { position: absolute; inset: 5px; border: 1px solid currentColor; border-radius: 50%; }
+
+.ticks {
+  height: 9px;
+  background:
+    repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 10%) top / 100% 9px no-repeat,
+    repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 2%) top / 100% 5px no-repeat;
+  opacity: .8;
+}
+
+.link-u {
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) left 100% / 100% 1px no-repeat;
+  transition: background-size .5s var(--ease-out), color .3s;
+}
+.link-u:hover { background-size: 0 1px; background-position: right 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
