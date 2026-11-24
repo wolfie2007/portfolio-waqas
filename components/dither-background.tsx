@@ -16,6 +16,8 @@ precision highp float;
 uniform vec2 u_resolution;
 uniform vec2 u_pointer;
 uniform float u_pointerStrength;
+uniform vec2 u_click;
+uniform float u_clickAge;
 uniform float u_time;
 uniform float u_cell;
 
@@ -115,6 +117,20 @@ void main() {
   float glow = exp(-distanceToPointer * 5.0);
   vec2 warp = normalize(delta + 1e-4) * ripple * 0.045 * u_pointerStrength;
 
+  // Concentric click wave
+  vec2 clickPos = (u_click - 0.5 * u_resolution) / u_resolution.y;
+  vec2 clickDelta = p - clickPos;
+  float clickDist = length(clickDelta);
+  float clickWave = 0.0;
+  if (u_clickAge >= 0.0 && u_clickAge < 1.3) {
+    float waveRadius = u_clickAge * 1.45;
+    float ringDelta = clickDist - waveRadius;
+    float ring = sin(ringDelta * 28.0) * exp(-ringDelta * ringDelta * 85.0);
+    float decay = (1.0 - u_clickAge / 1.3) * exp(-clickDist * 1.4);
+    clickWave = ring * decay;
+    warp += normalize(clickDelta + 1e-4) * clickWave * 0.12;
+  }
+
   float driftX = u_time * 0.018;
   float driftY = u_time * -0.012;
   vec2 q = p * 1.7 + warp + vec2(driftX, driftY);
@@ -125,6 +141,7 @@ void main() {
   field = smoothstep(0.32, 0.78, field);
   field += glow * u_pointerStrength * 0.10;
   field += ripple * u_pointerStrength * 0.04;
+  field += clickWave * 0.22;
 
   ivec2 cell = ivec2(floor(gl_FragCoord.xy / u_cell));
   float threshold = bayer8(cell);
@@ -218,6 +235,12 @@ export function DitherBackground() {
       lastMove: 0,
     };
 
+    const click = {
+      x: 0,
+      y: 0,
+      age: -1,
+    };
+
     function setup(): boolean {
       const vertexShader = compileShader(context, context.VERTEX_SHADER, vertexShaderSource);
       const fragmentShader = compileShader(
@@ -274,6 +297,8 @@ export function DitherBackground() {
         resolution: context.getUniformLocation(program, 'u_resolution'),
         pointer: context.getUniformLocation(program, 'u_pointer'),
         pointerStrength: context.getUniformLocation(program, 'u_pointerStrength'),
+        click: context.getUniformLocation(program, 'u_click'),
+        clickAge: context.getUniformLocation(program, 'u_clickAge'),
         time: context.getUniformLocation(program, 'u_time'),
         cell: context.getUniformLocation(program, 'u_cell'),
       };
@@ -319,6 +344,8 @@ export function DitherBackground() {
       context.uniform2f(uniforms.resolution, width, height);
       context.uniform2f(uniforms.pointer, pointer.x, pointer.y);
       context.uniform1f(uniforms.pointerStrength, pointer.strength);
+      context.uniform2f(uniforms.click, click.x, click.y);
+      context.uniform1f(uniforms.clickAge, reduced ? -1 : click.age);
       context.uniform1f(uniforms.time, reduced ? 0 : time);
       context.uniform1f(uniforms.cell, Math.max(2, Math.round(2 * dpr)));
 
@@ -359,6 +386,13 @@ export function DitherBackground() {
       lastFrame = now;
       time += delta * 0.001;
 
+      if (click.age >= 0) {
+        click.age += delta * 0.001;
+        if (click.age > 1.3) {
+          click.age = -1;
+        }
+      }
+
       if (now - pointer.lastMove > 1400) {
         pointer.targetStrength = 0;
       }
@@ -394,6 +428,24 @@ export function DitherBackground() {
       pointer.targetY = (rect.height - (event.clientY - rect.top)) * dpr;
       pointer.targetStrength = 1;
       pointer.lastMove = performance.now();
+    }
+
+    function onPointerDown(event: PointerEvent) {
+      if (reduced) return;
+
+      const rect = canvasEl.getBoundingClientRect();
+      const inside =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom;
+
+      if (!inside) return;
+
+      click.x = (event.clientX - rect.left) * dpr;
+      click.y = (rect.height - (event.clientY - rect.top)) * dpr;
+      click.age = 0.0;
+      start();
     }
 
     function onVisibilityChange() {
@@ -451,6 +503,7 @@ export function DitherBackground() {
     observer.observe(hostEl);
     resizeObserver.observe(hostEl);
     window.addEventListener('pointermove', onPointerMove, { passive: true });
+    window.addEventListener('pointerdown', onPointerDown, { passive: true });
     document.addEventListener('visibilitychange', onVisibilityChange);
     motionQuery.addEventListener('change', onMotionChange);
     canvasEl.addEventListener('webglcontextlost', onContextLost);
@@ -468,6 +521,7 @@ export function DitherBackground() {
       observer.disconnect();
       resizeObserver.disconnect();
       window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerdown', onPointerDown);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       motionQuery.removeEventListener('change', onMotionChange);
       canvasEl.removeEventListener('webglcontextlost', onContextLost);

@@ -165,6 +165,7 @@ Posts, components, projects, and dreams are typed arrays — add items there, ne
 - Heavy third-party UI libraries (shadcn, radix standalone, headlessui, etc.)
 - `<img>` for anything decorative — use CSS/SVG
 - Horizontal scrolling carousels
+- Weird pseudo-telemetry tags, fake analytics labels, corporate metric headers (`// EVALS`, `EXPERIMENT //`), or unrequested charts
 
 ---
 

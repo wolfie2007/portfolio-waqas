@@ -59,7 +59,7 @@ export function ComponentsShowcase() {
           return (
             <div
               key={component.slug}
-              className="grid gap-6 border-b border-paper/[0.08] py-10 sm:grid-cols-[1fr_19rem] sm:items-center sm:gap-10"
+              className="grid gap-6 border-b border-paper/[0.08] py-7 sm:py-10 sm:grid-cols-[1fr_19rem] sm:items-center sm:gap-10"
             >
               <div>
                 <div className="flex items-baseline gap-3">

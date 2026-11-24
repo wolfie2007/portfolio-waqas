@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { posts } from '@/content/site';
-import { formatDate } from '@/lib/format-date';
+import { Footer } from '@/components/footer';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -14,7 +14,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = posts.find((p) => p.slug === slug);
   if (!post) return {};
-  return { title: post.title };
+  return {
+    title: post.title,
+    description: post.summary,
+  };
 }
 
 export default async function WritingPost({ params }: Props) {
@@ -23,32 +26,33 @@ export default async function WritingPost({ params }: Props) {
   if (!post) notFound();
 
   return (
-    <div className="page-enter mx-auto w-full max-w-[46rem] px-6 sm:px-8">
-      <div className="border-b border-paper/[0.08] py-5">
-        <Link
-          href="/"
-          className="font-mono text-[10px] uppercase tracking-[0.16em] text-paper/40 transition-colors hover:text-paper"
-        >
-          ← Back
-        </Link>
+    <div className="page-enter flex min-h-[100svh] flex-col">
+      <div className="mx-auto w-full max-w-[46rem] flex-1 px-5 sm:px-8">
+        {/* Top Bar with Back Link */}
+        <div className="py-4 sm:py-5">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-paper/40 transition-colors hover:text-paper"
+          >
+            <span>←</span>
+            <span>Back</span>
+          </Link>
+        </div>
+
+        {/* Main Post Article - no dead space */}
+        <article className="pt-4 pb-10 sm:pt-6 sm:pb-14">
+          <header className="mb-6 sm:mb-8">
+            <h1 className="text-[1.85rem] sm:text-[2.5rem] font-medium leading-[1.12] tracking-[-0.04em] text-paper">
+              {post.title}
+            </h1>
+          </header>
+
+          <div className="prose-writing">{post.content()}</div>
+        </article>
       </div>
 
-      <article className="py-16 sm:py-24">
-        <header className="mb-14">
-          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-paper/30">
-            {formatDate(post.date)}
-          </p>
-          <h1 className="mt-4 text-[2rem] font-medium leading-[1.08] tracking-[-0.045em] text-paper sm:text-[2.5rem]">
-            {post.title}
-          </h1>
-        </header>
-
-        <div className="prose-writing">
-          <p className="text-paper/50 text-[0.9375rem] leading-7">
-            This post isn&apos;t written yet. Check back soon.
-          </p>
-        </div>
-      </article>
+      {/* Full-width Shared Footer */}
+      <Footer />
     </div>
   );
 }

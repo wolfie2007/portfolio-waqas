@@ -1,8 +1,5 @@
-export type Post = {
-  slug: string;
-  title: string;
-  date: string;
-};
+export type { Post } from './posts';
+export { posts } from './posts';
 
 export type Component = {
   slug: string;
@@ -21,62 +18,27 @@ export type Project = {
 
 export type Dream = {
   id: number;
-  year: string;
   title: string;
-  note: string;
-  ai: boolean;
 };
 
 // Demo content. Replace with the real thing when it exists.
 export const site = {
   name: 'Waqas Ameer',
-  dateOfBirth: '2006-03-14',
+  dateOfBirth: '2007-03-14',
   location: 'Islamabad, Pakistan',
   locationShort: 'Islamabad, PK',
   status:
-    'Building an agent harness, running evals, and writing down what breaks.',
+    'Currently learning and building things — working on a conversational AI system right now.',
   bio:
-    'Computer science student in Islamabad. I build small AI systems, break them on purpose, and write about what I learn.',
+    'Computer scientist in Islamabad. I build and test different things: harnesses, apps, web components, AI systems.',
   email: 'waqasameer654@gmail.com',
   socials: [
-    { label: 'X', href: 'https://x.com/wolfie2007' },
     { label: 'GitHub', href: 'https://github.com/wolfie2007' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/waqasameer/' },
+    { label: 'X', href: 'https://x.com/wolfie2007' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/waqas-ameer-024258374/' },
   ],
 } as const;
 
-export const posts: Post[] = [
-  {
-    slug: 'the-eval-was-lying',
-    title: 'The eval was lying to me',
-    date: '2026-11-18',
-  },
-  {
-    slug: 'a-harness-that-fails-loudly',
-    title: 'A harness that fails loudly',
-    date: '2026-11-06',
-  },
-  {
-    slug: 'four-hundred-benchmark-runs',
-    title: 'Four hundred benchmark runs later',
-    date: '2026-10-22',
-  },
-  {
-    slug: 'what-i-actually-use-an-agent-for',
-    title: 'What I actually use an agent for',
-    date: '2026-10-09',
-  },
-  {
-    slug: 'shitposting-as-a-research-method',
-    title: 'In defence of shitposting as a research method',
-    date: '2026-09-27',
-  },
-  {
-    slug: 'breaking-things-on-purpose',
-    title: 'Breaking things on purpose',
-    date: '2026-09-12',
-  },
-];
 
 export const components: Component[] = [
   {
@@ -111,54 +73,33 @@ export const projects: Project[] = [
     linkLabel: 'sitemind.tech',
   },
   {
-    name: 'CodeDuel',
+    name: 'UI Components',
     description:
-      'Live 1v1 coding battles with problems written fresh by a model.',
-    href: 'https://codeduel.live',
-    linkLabel: 'codeduel.live',
-  },
-  {
-    name: 'Encrypto',
-    description: 'A C++ desktop app for encrypting files, built to learn the guts.',
-    href: 'https://github.com/wolfie2007',
-    linkLabel: 'GitHub',
+      'A collection of open-source micro-interactions and tactile controls with spring physics.',
+    href: '/components',
+    linkLabel: 'Components',
   },
 ];
 
 export const dreams: Dream[] = [
   {
     id: 1,
-    year: '2028',
-    title: 'Build something a million people rely on',
-    note: 'A product, not a prototype. Something people would miss.',
-    ai: true,
+    title: 'Contribute to something a billion people rely on.',
   },
   {
     id: 2,
-    year: '2029',
-    title: 'Work on frontier AI with people I respect',
-    note: 'A lab, a research team, or a company doing the hard part.',
-    ai: true,
+    title: 'Work on frontier AI with people I get inspired from in my career.',
   },
   {
     id: 3,
-    year: '2031',
-    title: 'Make AI that gives people their time back',
-    note: 'Quietly useful. No prompt engineering required.',
-    ai: true,
+    title: 'At least travel across 10+ countries.',
   },
   {
     id: 4,
-    year: '2035',
-    title: 'See the Earth from orbit',
-    note: 'The one that has nothing to do with work.',
-    ai: false,
+    title: 'Buy a BMW M5 F90 Competition.',
   },
   {
     id: 5,
-    year: 'Ongoing',
-    title: 'Stay kind on the way up',
-    note: 'The only one I can fail at every day.',
-    ai: false,
+    title: "Build something extremely useful that becomes part of people's daily life.",
   },
 ];
