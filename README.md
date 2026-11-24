@@ -1,3 +1,5 @@
 # Waqas Ameer
 
-Personal site: writing, projects, and a component library.
+Personal site: writing, components, projects, and dreams.
+
+Stack: Next.js App Router, TypeScript, Tailwind CSS, Framer Motion.
