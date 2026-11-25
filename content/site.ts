@@ -66,6 +66,13 @@ export const components: Component[] = [
 
 export const projects: Project[] = [
   {
+    name: 'Mindy',
+    description:
+      'An open-source animated SVG mascot with 8 moods, cursor tracking, and a small studio to tune it.',
+    href: 'https://mindymascot.vercel.app',
+    linkLabel: 'mindymascot.vercel.app',
+  },
+  {
     name: 'SiteMind',
     description:
       'A support assistant that answers from a website and cites its sources.',
