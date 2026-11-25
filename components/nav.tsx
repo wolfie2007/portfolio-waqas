@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { site } from '@/content/site';
+import { Logo } from './logo';
 
 const NAV_ITEMS = [
   { label: 'Writing', href: '#writing' },
@@ -90,9 +91,11 @@ export function Nav() {
         <a
           href="#"
           onClick={scrollToTop}
-          className="pointer-events-auto text-[14px] sm:text-[15px] font-medium tracking-tight text-paper transition-colors hover:text-paper/80"
+          aria-label={site.name}
+          title={site.name}
+          className="pointer-events-auto inline-flex items-center text-paper transition-opacity duration-200 hover:opacity-75"
         >
-          {site.name}
+          <Logo className="h-[22px] w-auto sm:h-[25px]" />
         </a>
 
         {/* Section Links */}
